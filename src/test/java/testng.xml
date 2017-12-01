@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "UMeR">
+    <test name = "Testes do Menu">
+        <classes>
+            <class name = "menu.RegistoTestes"/>
+            <class name = "menu.LoginTestes"/>
+        </classes>
+    </test>
+    <test name = "Teste do Utilizador">
+        <classes>
+            <class name = "utilizador.test"/>
+        </classes>
+    </test>
+    <test name = "Testes do Veiculo">
+        <classes>
+            <class name = "veiculo.test"/>
+        </classes>
+    </test>
+    <test name = "Testes da Viagem">
+        <classes>
+            <class name = "viagem.test"/>
+        </classes>
+    </test>
+    <test name = "Outros Testes">
+        <classes>
+            <class name = "outros.test"/>
+        </classes>
+    </test>
+</suite>
