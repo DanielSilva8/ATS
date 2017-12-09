@@ -93,6 +93,12 @@ public class Viagem implements Comparable<Viagem>, Serializable
     public void setMail(String i){
         this.mail=i;
     }
+    public void setPreco(double i){
+        this.preco=i;
+    }
+    public void setDesvio(double i){
+        this.desvio=i;
+    }
     
     /**
      * @return Coordenada inicial
@@ -177,6 +183,7 @@ public class Viagem implements Comparable<Viagem>, Serializable
        if(r==0) r = cfinal.compareTo(b.getcfinal());
        if(r==0) {
            if(this.tempo<b.getTempo()) r = -1;
+           //TODO FAZER ELSE
            if(this.tempo==b.getTempo()) r = 0;
            else r = 1;
         }
@@ -192,7 +199,7 @@ public class Viagem implements Comparable<Viagem>, Serializable
            if(this.desvio==b.getDesvio()) r = 0;
            else r = 1;
         }
-       
+
        return r;
    }
    
@@ -205,8 +212,11 @@ public class Viagem implements Comparable<Viagem>, Serializable
    public boolean equals(Object o) {
         if(o==this)
             return true;
+        // TODO fazer o else
         if(o==null || o.getClass() != this.getClass()) 
             return false;
+
+//TODO O QUE FAZ ESTA MERDA ?
         Viagem v = (Viagem) o;
         return v.getcinicial().equals(cinicial) && v.getcfinal().equals(cfinal) && 
                v.getMail().equals(mail) && v.getTempo() == tempo && this.data.equals(v.getData())

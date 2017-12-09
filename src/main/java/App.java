@@ -11,15 +11,16 @@ import exceptions.NenhumaViagemException;
 import menu.Login;
 import menu.Menu;
 import menu.Registo;
+import utilizadores.Ator;
 import utilizadores.Cliente;
 import utilizadores.Motorista;
 import utilizadores.Utilizadores;
+import utils.Coordenada;
 import veiculos.Veiculo;
+import viagem.Viagem;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class App implements Serializable{
     private Utilizadores utilizadores;
@@ -73,9 +74,10 @@ public class App implements Serializable{
      * Executa o menu principal e invoca o método correspondente à opção seleccionada.
      */
     private void run() {
+
         System.out.println("A carregar os dados...");
         try{
-           carregaEstado("C:\\Users\\danys\\Downloads\\UMER_REFACTOR\\src\\main\\resources\\Appdadosbin");
+           carregaEstado(System.getProperty("user.dir") + "/src/main/resources/Appdadosbin");
         }
         catch (IOException e){
             System.out.println("Erro no ficheiro.");
@@ -98,8 +100,9 @@ public class App implements Serializable{
         
         System.out.println("A guardar os dados...");
         try{
-           guardaEstado("C:\\Users\\danys\\Downloads\\UMER_REFACTOR\\src\\main\\resources\\Appdadosbin");
-           escreveEmFicheiroTxt("C:\\Users\\danys\\Downloads\\UMER_REFACTOR\\src\\main\\resources\\Appdadosbin.txt");
+           guardaEstado(System.getProperty("user.dir") + "/src/main/resources/Appdadosbin");
+
+           escreveEmFicheiroTxt(System.getProperty("user.dir") + "/src/main/resources/Appdadosbin.txt");
         } 
         catch (IOException e){
             System.out.println("Erro no ficheiro.");

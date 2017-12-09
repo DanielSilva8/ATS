@@ -10,7 +10,10 @@
     </test>
     <test name = "Teste do Utilizador">
         <classes>
-            <class name = "utilizador.test"/>
+            <class name = "utilizador.UtilizadorTestes"/>
+            <class name = "utilizador.AtorTestes"/>
+            <class name = "utilizador.MotoristaTestes"/>
+            <class name = "utilizador.ClienteTestes"/>
         </classes>
     </test>
     <test name = "Testes do Veiculo">
@@ -20,7 +23,7 @@
     </test>
     <test name = "Testes da Viagem">
         <classes>
-            <class name = "viagem.test"/>
+            <class name = "viagem.ViagemTestes"/>
         </classes>
     </test>
     <test name = "Outros Testes">
