@@ -166,7 +166,6 @@ public abstract class Ator implements Comparable<Ator>, Serializable
         if(o == this) return true;
         
         if(o == null || (o.getClass() != this.getClass())) return false;
-        
         Ator at = (Ator) o;
         
         if(this.historico.size() != at.getHistorico().size()) return false;

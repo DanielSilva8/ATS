@@ -6,14 +6,14 @@ Morada: morada
 Data de nascimento: 17-01-1995
 Grau de cumprimento de horário: 100
 Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
+Número de Kms realizados na UMeR até ao momento: 0$00
 O motorista encontra-se em horário de trabalho: false
 
 E-mail: user1
 Nome: user1
 Password: password
 Morada: morada
-Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0$00
 
 E-mail: email2
 Nome: nome2
@@ -22,14 +22,14 @@ Morada: morada
 Data de nascimento: 17-01-1995
 Grau de cumprimento de horário: 100
 Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
+Número de Kms realizados na UMeR até ao momento: 0$00
 O motorista encontra-se em horário de trabalho: false
 
 E-mail: user2
 Nome: user2
 Password: password
 Morada: morada
-Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0$00
 
 E-mail: email1
 Nome: nome1
@@ -38,14 +38,14 @@ Morada: morada
 Data de nascimento: 17-01-1995
 Grau de cumprimento de horário: 100
 Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
+Número de Kms realizados na UMeR até ao momento: 0$00
 O motorista encontra-se em horário de trabalho: false
 
 E-mail: user
 Nome: user
 Password: password
 Morada: morada
-Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0$00
 
 E-mail: email
 Nome: nome
@@ -54,13 +54,13 @@ Morada: morada
 Data de nascimento: 17-01-1995
 Grau de cumprimento de horário: 100
 Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
+Número de Kms realizados na UMeR até ao momento: 0$00
 O motorista encontra-se em horário de trabalho: false
 
 E-mail: user3
 Nome: user3
 Password: password
 Morada: morada
-Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0$00
 
 
