@@ -53,6 +53,7 @@ public class Carro extends Veiculo implements Serializable{
      * @return 
      */
     public boolean equals(Object o) {
+
         if(o == this) {
             return true;
         }

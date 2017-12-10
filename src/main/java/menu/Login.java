@@ -48,7 +48,9 @@ public class Login{
         else
             System.out.println("Dados de Login inválidos!");
     }
-    
+
+
+
     private void loginCliente( Utilizadores utilizadores,HashMap<String,Veiculo> veiculos,String email){
         Cliente c = (Cliente) utilizadores.getUtilizadores().get(email);
         Scanner scin = new Scanner(System.in);

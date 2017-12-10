@@ -2,6 +2,7 @@ package menu;
 
 import exceptions.EmailDoesNotExistException;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utilizadores.Cliente;
 import utilizadores.Motorista;
@@ -25,18 +26,13 @@ public class RegistoTestes {
     private HashMap<String,Veiculo> veiculos;
     private Utilizadores utilizadores;
     private Registo registo;
-    private Cliente cliente;
-    private Motorista motorista;
-
     @BeforeClass
     public  void before() {
         utilizadores = new Utilizadores();
         veiculos = new HashMap<String, Veiculo>();
         registo = new Registo();
-
-        cliente = new Cliente();
-        motorista = new Motorista();
     }
+
     @Test
     public void testeRegistarMotorista() {
         String data = "email\r\nnome\r\npass\r\nmorada\r\n17-01-1995";

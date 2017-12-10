@@ -7,71 +7,46 @@ package utils;
  * @version v1(02052017)
  */
 import java.io.Serializable;
+//TODO Serializable??
 
 public class Coordenada implements Serializable
 {
-    // variáveis de instância
     private int coorX;
     private int coorY;
-    
-    /**
-     * Construtor Vazio
-     */
+
     public Coordenada(){
         coorX=0;
         coorY=0;
     }
-    
-    /**
-     * Construtor paramétrico
-     * @param x
-     * @param y
-     */
+
     public Coordenada(int x, int y){
         this.coorX=x;
         this.coorY=y;
     }
-    
-    /**
-     * Construtor por cópia
-     * @param a
-     */
+
    public Coordenada(Coordenada a){
         this.coorX=a.getX();
         this.coorY=a.getY();
     }
     
-   
-   /**
-     * @return variavel coorX
-     */
+
     public int getX(){
         return this.coorX;
    }
-    
-   /**
-     * @return variavel coorY
-     */
+
     public int getY(){
         return this.coorY;
    }
-   
-   /**
-     * Detetermina o código de hash
-     * @return int
-     */
+
     public int hashCode(){
         int hash=6;
         
-        hash = 37 * hash + this.coorX;
+        hash = 37 * hash + this.coorX;   //TODO REFACTOR
         hash = 37 * hash + this.coorY;
         
         return hash;
     }
-   
-   /**
-    * Metodo Compare
-    */
+
    public int compareTo(Coordenada b){
        if(this.coorX==b.getX()){
            if(this.coorY==b.getY()) return 0;
@@ -81,12 +56,7 @@ public class Coordenada implements Serializable
        if(this.coorX<b.getX())return 1;
        else return -1;
     }
-   
-   /**
-    * Comparação com outro Objeto o
-    * @param o
-    * @return boolean a indicar se é igual ao não a 'o'.
-    */
+
    public boolean equals(Object o) {
        if(o==this)
            return true;
@@ -95,18 +65,11 @@ public class Coordenada implements Serializable
        Coordenada v = (Coordenada) o;
        return v.getX()==coorX && v.getY()==coorY;
    }
-   
-   /**
-    * Método clone.
-    */
+
    public Coordenada clone(){
        return new Coordenada(this);
    }
-   
-   /**
-     * Representação textual.
-     * @return Informaçao da Coordenada em String
-     */
+
    public String toString(){
        StringBuilder s = new StringBuilder();
        s.append("Coordenada X: "+coorX+" Coordenada Y: "+coorY);

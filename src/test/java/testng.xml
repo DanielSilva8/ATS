@@ -15,7 +15,10 @@
     </test>
     <test name = "Testes do Veiculo">
         <classes>
-            <class name = "veiculo.test"/>
+            <class name = "veiculo.VeiculoTestes"/>
+            <class name = "veiculo.CarroTestes"/>
+            <class name = "veiculo.CarrinhaTestes"/>
+            <class name = "veiculo.MotaTestes"/>
         </classes>
     </test>
     <test name = "Testes da Viagem">
@@ -25,7 +28,10 @@
     </test>
     <test name = "Outros Testes">
         <classes>
-            <class name = "outros.test"/>
+            <class name = "outros.CoordenadaTestes"/>
+            <class name = "outros.ComparadorDesvioTeste"/>
+            <class name = "outros.ComparadorGastoDescrescenteTeste"/>
+            <class name = "outros.ComparadorMotoristaDesvioMaximoTeste"/>
         </classes>
     </test>
 </suite>
