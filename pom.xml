@@ -20,6 +20,15 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -29,8 +38,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20.1</version>
                 <configuration>
+
+                    <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/java/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/java/xml/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/java/xml/integrationtest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/java/xml/systemtest.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -52,8 +65,8 @@
 
                 <configuration>
                     <excludes>
-                        <exclude>**/*exceptions.*</exclude>
-
+                        <exclude>**/exceptions/*</exclude>
+                        <exclude>**/menu/Menu.class</exclude>
                     </excludes>
                 </configuration>
 

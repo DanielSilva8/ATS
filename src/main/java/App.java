@@ -31,7 +31,22 @@ public class App implements Serializable{
     private Menu menuPrincipal;
     private Login menuLogin;
     private Registo menuRegisto;
-    
+
+    public Utilizadores getUtilizadores() {
+        return utilizadores;
+    }
+    public HashMap<String, Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setUtilizadores(Utilizadores utilizadores) {
+        this.utilizadores = utilizadores;
+    }
+
+    public void setVeiculos(HashMap<String, Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
     /**
      * O método main cria a aplicação e invoca o método run()
      */
@@ -157,7 +172,6 @@ public class App implements Serializable{
     }
     
     public void guardaEstado(String nome) throws IOException {
-
 
         FileOutputStream f = new FileOutputStream(nome);
         ObjectOutputStream o = new ObjectOutputStream(f);
