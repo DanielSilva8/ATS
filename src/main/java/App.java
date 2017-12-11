@@ -42,7 +42,6 @@ public class App implements Serializable{
      * Cria os menus e a camada de negócio.
      */    
     private App() {
-
 //        try {
 //            this.utilizadores = new Utilizadores();
 //            this.utilizadores.adiciona("email","nome","password","morada","17-01-1995",null);

@@ -65,17 +65,5 @@ public class ViagemTestes {
         assertEquals(viagem1.equals(viagem2), false);
     }
 
-    @Test
-    public void TestToString() {
-        String x = "Coordenada inicial: Coordenada X: 1 Coordenada Y: 1" +
-                "\nCoordenada final: Coordenada X: 2 Coordenada Y: 2" +
-                "\nTempo que demorou a viagem: 200$00" +
-                "\nMail do ator: mail1"+
-                "\nData da viagem: 6-11-2017"+
-                "\nPreço real da viagem: 100$00"+
-                "\nDesvio entre o valor previsto e o preço real faturado: 3$00";
-
-        assertEquals(viagem1.toString(), x);
-    }
 
 }

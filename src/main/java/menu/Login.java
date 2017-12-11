@@ -34,7 +34,6 @@ public class Login{
         System.out.println("\n-----------Login-----------");
         System.out.print("Email: ");
         email = scin.nextLine();
-        System.out.print(email);
         System.out.print("Password: ");
         password = scin.nextLine();
             
@@ -48,9 +47,6 @@ public class Login{
         else
             System.out.println("Dados de Login inválidos!");
     }
-
-
-
     private void loginCliente( Utilizadores utilizadores,HashMap<String,Veiculo> veiculos,String email){
         Cliente c = (Cliente) utilizadores.getUtilizadores().get(email);
         Scanner scin = new Scanner(System.in);
@@ -89,9 +85,7 @@ public class Login{
         
         System.out.println("Até breve!");
     }
-    
-    
-    private void chamarViatura(Cliente c, Utilizadores utilizadores, int nLugares){
+    public void chamarViatura(Cliente c, Utilizadores utilizadores, int nLugares){
         Scanner scin = new Scanner(System.in);
         int x=0,y=0,a=0,b=0;
         boolean sucesso;
@@ -154,19 +148,22 @@ public class Login{
             catch(EmailDoesNotExistException e){System.out.println("Unexpected Error. Estrutura corrompida?");}
         }
     }
-    
-    private String closerMotorista(Coordenada loc, int nLugares){
+
+    public void setMotoristas(Set<Motorista> m)  {
+        this.motoristas = null; this.motoristas = m;
+    }
+    public String closerMotorista(Coordenada loc, int nLugares){
         String email=null;
         int d=Integer.MAX_VALUE;
         
         for(Motorista m :this.motoristas){
+
             if(m.getDisponibilidade() && m.getVeiculo().getLugares() >= nLugares && d>m.getVeiculo().getCoordenadas().distancia(loc))
                 email = m.getMail();
         }
                
         return email;
-    }    
-    
+    }
     private void loginMotorista( Utilizadores utilizadores,HashMap<String,Veiculo> veiculos,String email){
         Motorista m = (Motorista) utilizadores.getUtilizadores().get(email);
         Scanner scin = new Scanner(System.in);
@@ -224,8 +221,7 @@ public class Login{
         
         System.out.println("Até breve!");
     }
-    
-    private void associarViatura(Motorista m,HashMap<String,Veiculo> veiculos){
+    public void associarViatura(Motorista m,HashMap<String,Veiculo> veiculos){
         int i=0;
         if(m.getVeiculo()!=null){
             m.getVeiculo().setOcupado(false);
@@ -255,8 +251,7 @@ public class Login{
                 System.out.println("\nMatricula inexistente");
         }
     }
-    
-    private void verDados(Ator a){
+    public void verDados(Ator a){
         System.out.println("\n-----------Dados pessoais-----------");
         System.out.println("Email: " + a.getMail());        
         System.out.println("Nome: " + a.getNome());
@@ -275,8 +270,8 @@ public class Login{
         }
         
     }
-    
-    private void verHistorico(Ator a){
+    public
+    void verHistorico(Ator a){
         int op;
         GregorianCalendar aux = new GregorianCalendar();
         boolean cond = true;
@@ -321,12 +316,7 @@ public class Login{
         }
         else System.out.println("Opção inválida!");
     }
-    
-    /**
-     * Realizar uma viagem.
-     * @param c
-     * @param m
-     */
+    //TEST
     public void realizarViagem(Cliente c, Motorista m, double distanciaAteCliente, Coordenada inicio, Coordenada fim){
         m.setDisponibilidade(false); //Motorista não pode ser solicitado por outros clientes enquanto realiza uma viagem.
         
@@ -415,7 +405,8 @@ public class Login{
         }
         else System.out.println("Opção inválida!!");
     }
-    
+
+    //TODO datas iguais? duplicação de código
     /**
      * Pede ao utilizador para introduzir uma data inicial.
      * @return
@@ -429,6 +420,7 @@ public class Login{
         
         System.out.print("Ano:");
         while(cond){
+            System.out.println( sc.nextInt());
            anoI = sc.nextInt();
            if(anoI < 0) System.out.println("Introduza um ano válido!");
            else cond = false;
@@ -460,7 +452,6 @@ public class Login{
      * Pede ao utilizador para introduzir uma data final.
      * @return GregorianCalendar
      */
-
     public GregorianCalendar dataFinal(){
         int anoF, mesF, diaF;
         anoF = mesF = diaF = 0;
