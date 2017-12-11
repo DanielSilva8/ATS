@@ -59,18 +59,7 @@ public class MotoristaTestes {
             assertEquals(this.motorista.tempoViagem(200),expected);
 
     }
-    @Test
-    public void atualizaDadosTeste(){
-    Coordenada coordenada = new Coordenada(3,3);
-    this.motorista.atualizaDados(coordenada,120, 80, 80);
 
-
-        assertEquals(this.motorista.getVeiculo().getCoordenadas().getX(),3);
-        assertEquals(this.motorista.getVeiculo().getCoordenadas().getY(),3);
-        assertEquals(this.motorista.getKmsTotais(),1320.0);
-        assertEquals(this.motorista.getGrau(),80);
-        assertEquals(this.motorista.getVeiculo().getFiabilidade(),80);
-    }
 
     @Test
     public void totalfaturadoTeste(){
@@ -108,5 +97,8 @@ public class MotoristaTestes {
     public void after() {
         int i = this.motorista.hashCode();
        String g =  this.motorista.toString();
+        Coordenada coordenada = new Coordenada(3,3);
+        this.motorista.atualizaDados(coordenada,120, 80, 80);
+
     }
 }

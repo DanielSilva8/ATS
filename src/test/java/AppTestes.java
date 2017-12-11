@@ -12,6 +12,7 @@ import veiculos.Carro;
 import veiculos.Veiculo;
 import viagem.Viagem;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
@@ -86,6 +87,30 @@ public class AppTestes {
         }
     }
 
+    @Test
+    public void runTeste(){
+        String data2 = "0\r\n";
+        try {
+            System.setIn(new ByteArrayInputStream(data2.getBytes()));
+            app.run();
+
+        } finally {
+            System.setIn(System.in);
+        }
+    }
+    @Test
+    public void funcionalidadesTeste(){
+        String data = "1";
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            app.funcionalidades();
+
+        } finally {
+            System.setIn(System.in);
+        }
+        int a = 2;
+    }
+
     @AfterClass
     public void after(){
         String qq = "";
@@ -94,8 +119,6 @@ public class AppTestes {
         app.top5MotoristasComMaiorDesvio();
         app.listarVeiculos();
         app.trataListarUtilizadores();
-        app.funcionalidades();
-        app.run();
 
 
     }

@@ -73,7 +73,7 @@ public class AtorTestes {
     @Test
     public void equalsTeste(){
 
-    Ator a = new Cliente("mail1", "Leonel", "qwerty", "Braga", "29-09-1995", viagens, 11);
+    Ator a = ator.clone();
     Ator b = new Cliente("mail2", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
         assertEquals(ator.equals(a), true);
         assertEquals(ator.equals(b), false);

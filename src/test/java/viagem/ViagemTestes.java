@@ -33,21 +33,16 @@ public class ViagemTestes {
 
         viagem2.setcinicial(cinicial1);
         viagem2.setcfinal(cfinal1);
-        viagem2.setMail("mail2");
+        viagem2.setMail("mail22");
         viagem2.setTempo(400);
         viagem2.setDesvio(4);
         viagem2.setPreco(200);
 
-        viagem3.setcinicial(cinicial1);
-        viagem3.setcfinal(cfinal1);
-        viagem3.setMail("mail1");
-        viagem3.setTempo(200);
-        viagem3.setDesvio(3);
-        viagem3.setPreco(100);
+        viagem3 = viagem1.clone();
 
         viagem4.setcinicial(cinicial1);
         viagem4.setcfinal(cfinal1);
-        viagem4.setMail("mail4");
+        viagem4.setMail("mail");
         viagem4.setTempo(100);
         viagem4.setDesvio(2);
         viagem4.setPreco(50);
@@ -66,18 +61,6 @@ public class ViagemTestes {
         assertEquals(viagem1.equals(viagem2), false);
     }
 
-    @Test
-    public void TestToString() {
-        String x = "Coordenada inicial: Coordenada X: 1 Coordenada Y: 1" +
-                "\nCoordenada final: Coordenada X: 2 Coordenada Y: 2" +
-                "\nTempo que demorou a viagem: 200$00" +
-                "\nMail do ator: mail1"+
-                "\nData da viagem: 6-11-2017"+
-                "\nPreço real da viagem: 100$00"+
-                "\nDesvio entre o valor previsto e o preço real faturado: 3$00";
-
-        assertEquals(viagem1.toString(), x);
-    }
     @AfterClass
     public void after() {
         int i = this.viagem1.hashCode();
