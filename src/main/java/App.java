@@ -1,4 +1,4 @@
- /**
+/**
  * Exemplo de aplicação com menu em modo texto.
 
  * 
@@ -11,6 +11,7 @@ import exceptions.NenhumaViagemException;
 import menu.Login;
 import menu.Menu;
 import menu.Registo;
+import utilizadores.Ator;
 import utilizadores.Cliente;
 import utilizadores.Motorista;
 import utilizadores.Utilizadores;
@@ -30,9 +31,7 @@ public class App implements Serializable{
     private Menu menuPrincipal;
     private Login menuLogin;
     private Registo menuRegisto;
-
-
-
+    
     /**
      * O método main cria a aplicação e invoca o método run()
      */
@@ -57,15 +56,6 @@ public class App implements Serializable{
         // Criar a lógica de negócio
         this.utilizadores = new Utilizadores();
         this.veiculos = new HashMap<String,Veiculo>();
-
-        try {
-            this.utilizadores.adiciona("email","nome","password","morada","17-01-1995",null);
-
-        } catch (EmailAlreadyInUseException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     /**

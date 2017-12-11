@@ -6,6 +6,7 @@
         <classes>
             <class name = "menu.RegistoTestes"/>
             <class name = "menu.LoginTestes"/>
+            <class name = "menu.OutrosLoginTestes"/>
         </classes>
     </test>
     <test name = "Teste do Utilizador">

@@ -1,6 +1,7 @@
 package menu;
 
 import exceptions.EmailDoesNotExistException;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,6 +27,18 @@ public class RegistoTestes {
     private HashMap<String,Veiculo> veiculos;
     private Utilizadores utilizadores;
     private Registo registo;
+
+    @DataProvider(name = "registoCliente")
+    public static Object[][] credentialsC() {
+        return new Object[][] { { "email1", "nome", "pass", "morada", "17-01-1995", ""},  { "email1", "nome", "pass", "morada", "17-01-1995", "email11"}};
+    }
+
+    @DataProvider(name = "registoVeiculo")
+    public static Object[][] credentialsV() {
+        return new Object[][] { { "1", "120", "1000", "matricula", ""},   { "1", "120", "1000", "matricula", "newMatricula"},  { "9\n1", "120", "1000", "matricdcla2", ""},  { "4\n1", "120", "1", "matricula3", ""}};
+    }
+
+
     @BeforeClass
     public  void before() {
         utilizadores = new Utilizadores();
@@ -55,19 +68,19 @@ public class RegistoTestes {
             e.printStackTrace();
         }
     }
-    @Test
-    public void testeRegistarCliente() {
-        String data = "email1\r\nnome1\r\npass1\r\nmorada1\r\n18-01-1995";
+    @Test(dataProvider = "registoCliente")
+    public void testeRegistarCliente(String email, String nome,String pass, String morada, String nascimento, String newEmail) {
+        String data = email+"\r\n"+ nome + "\r\n" + pass + "\r\n" + morada + "\r\n" + nascimento + "\n" + newEmail;
 
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             registo.registarUtilizador(utilizadores, "cliente");
 
-            assertEquals(utilizadores.getAtor("email1").getNome(), "nome1");
-            assertEquals(utilizadores.getAtor("email1").getDataDeNascimento(), "18-01-1995");
-            assertEquals(utilizadores.getAtor("email1").getPassword(), "pass1");
-            assertEquals(utilizadores.getAtor("email1").getMorada(), "morada1");
-            assertTrue(utilizadores.getAtor("email1") instanceof Cliente);
+            assertEquals(utilizadores.getAtor(email).getNome(), nome);
+            assertEquals(utilizadores.getAtor(email).getDataDeNascimento(), nascimento);
+            assertEquals(utilizadores.getAtor(email).getPassword(), pass);
+            assertEquals(utilizadores.getAtor(email).getMorada(), morada);
+            assertTrue(utilizadores.getAtor(email) instanceof Cliente);
 
         } catch (EmailDoesNotExistException e) {
             e.printStackTrace();
@@ -76,17 +89,17 @@ public class RegistoTestes {
         }
     }
 
-    @Test
-    public void testeRegistarCarro() {
-        String data = "1\r\n120\r\n1000\r\nmatricula\r\n";
+    @Test(dataProvider = "registoVeiculo")
+    public void testeRegistarCarro(String menu, String vm,String preco, String matricula, String novamatricula ) {
+        String data = menu + "\r\n" + vm + "\r\n" + preco+ "\r\n" + matricula + "\r\n" + novamatricula;
 
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             registo.registarVeiculo(veiculos);
 
-            assertEquals(veiculos.get("matricula").getVelocidadeMedia(),120);
-            assertEquals(veiculos.get("matricula").getPrecoBase(),Double.parseDouble("1000"));
-            assertTrue(veiculos.get("matricula") instanceof Carro);
+            assertEquals(veiculos.get(matricula).getVelocidadeMedia(),Integer.parseInt(vm));
+            assertEquals(veiculos.get(matricula).getPrecoBase(),Double.parseDouble(preco));
+            assertTrue(veiculos.get(matricula) instanceof Carro);
 
         } finally {
             System.setIn(System.in);
@@ -112,17 +125,40 @@ public class RegistoTestes {
 
     @Test
     public void testeRegistarMota() {
-        String data = "3\r\n120\r\n1000\r\nmatricula3\r\n";
+        String data = "3\r\n120\r\n1000\r\nmatricula33\r\n";
 
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             registo.registarVeiculo(veiculos);
 
-            assertEquals(veiculos.get("matricula3").getVelocidadeMedia(),120);
-            assertEquals(veiculos.get("matricula3").getPrecoBase(),Double.parseDouble("1000"));
-            assertTrue(veiculos.get("matricula3") instanceof Mota);
+            assertEquals(veiculos.get("matricula33").getVelocidadeMedia(),120);
+            assertEquals(veiculos.get("matricula33").getPrecoBase(),Double.parseDouble("1000"));
+            assertTrue(veiculos.get("matricula33") instanceof Mota);
 
         } finally {
+            System.setIn(System.in);
+        }
+    }
+
+    @AfterClass
+    public void after() {
+        String data = "1";
+        String data2 = "2";
+        String data3 = "3";
+        String data4 = "4";
+
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            registo.executa(utilizadores, veiculos);
+            System.setIn(new ByteArrayInputStream(data2.getBytes()));
+            registo.executa(utilizadores, veiculos);
+            System.setIn(new ByteArrayInputStream(data3.getBytes()));
+            registo.executa(utilizadores, veiculos);
+            System.setIn(new ByteArrayInputStream(data4.getBytes()));
+            registo.executa(utilizadores, veiculos);
+
+        } catch (Exception e) {} finally {
             System.setIn(System.in);
         }
     }

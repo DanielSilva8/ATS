@@ -70,7 +70,7 @@ public class AtorTestes {
             e.getStackTrace();
         }
     }
-@Test
+    @Test
     public void equalsTeste(){
 
     Ator a = new Cliente("mail1", "Leonel", "qwerty", "Braga", "29-09-1995", viagens, 11);
@@ -78,25 +78,6 @@ public class AtorTestes {
         assertEquals(ator.equals(a), true);
         assertEquals(ator.equals(b), false);
 
-    }
-
-    @Test
-    public void TestToString() {
-        String z = "";
-        for (Viagem viagem : ator.getHistorico()) {
-            z= z + viagem.toString()+ "\n";
-        }
-
-
-        String x = "E-mail: mail1" +
-                "\nNome: Leonel" +
-                "\nPassword: qwerty" +
-                "\nMorada: Braga"+
-                "\nData de nascimento: 29-09-1995"+
-                z +
-                "Montante de dinheiro utilizado no serviço UMeR: 11$00\n";
-
-        assertEquals(ator.toString(), x);
     }
 
     @Test
