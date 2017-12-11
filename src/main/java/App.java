@@ -1,4 +1,4 @@
-/**
+ /**
  * Exemplo de aplicação com menu em modo texto.
 
  * 
@@ -11,11 +11,11 @@ import exceptions.NenhumaViagemException;
 import menu.Login;
 import menu.Menu;
 import menu.Registo;
-import utilizadores.Ator;
 import utilizadores.Cliente;
 import utilizadores.Motorista;
 import utilizadores.Utilizadores;
 import utils.Coordenada;
+import veiculos.Carro;
 import veiculos.Veiculo;
 import viagem.Viagem;
 
@@ -30,7 +30,9 @@ public class App implements Serializable{
     private Menu menuPrincipal;
     private Login menuLogin;
     private Registo menuRegisto;
-    
+
+
+
     /**
      * O método main cria a aplicação e invoca o método run()
      */
@@ -41,22 +43,9 @@ public class App implements Serializable{
      * 
      * Cria os menus e a camada de negócio.
      */    
-    private App() {
+    public App() {
 
-//        try {
-//            this.utilizadores = new Utilizadores();
-//            this.utilizadores.adiciona("email","nome","password","morada","17-01-1995",null);
-//            this.utilizadores.adiciona("email1","nome1","password","morada","17-01-1995",null);
-//            this.utilizadores.adiciona("email2","nome2","password","morada","17-01-1995",null);
-//            this.utilizadores.adiciona("email3","nome3","password","morada","17-01-1995",null);
-//            this.utilizadores.adiciona("user","user","password","morada","17-01-1995");
-//            this.utilizadores.adiciona("user1","user1","password","morada","17-01-1995");
-//            this.utilizadores.adiciona("user2","user2","password","morada","17-01-1995");
-//            this.utilizadores.adiciona("user3","user3","password","morada","17-01-1995");
-//
-//        } catch (EmailAlreadyInUseException e) {
-//            e.printStackTrace();
-//        }
+
 
         String[] opcoes = {"Login",
                          "Registar",
@@ -68,12 +57,23 @@ public class App implements Serializable{
         // Criar a lógica de negócio
         this.utilizadores = new Utilizadores();
         this.veiculos = new HashMap<String,Veiculo>();
+
+        try {
+            this.utilizadores.adiciona("email","nome","password","morada","17-01-1995",null);
+
+        } catch (EmailAlreadyInUseException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     /**
      * Executa o menu principal e invoca o método correspondente à opção seleccionada.
      */
-    private void run() {
+    public void run() {
+
+
 
         System.out.println("A carregar os dados...");
         try{
@@ -111,11 +111,11 @@ public class App implements Serializable{
         System.out.println("Até breve!...");     
     }
     
-    private void trataListarUtilizadores() {
+    public void trataListarUtilizadores() {
         System.out.println(this.utilizadores);
     }
     
-    private void listarVeiculos() {
+    public void listarVeiculos() {
         System.out.println("\n Veiculos");
         if(this.veiculos.isEmpty()) System.out.println("Não existem veiculos no sistema UMeR.");
         for(Veiculo v:this.veiculos.values())

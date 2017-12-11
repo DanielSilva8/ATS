@@ -202,6 +202,8 @@ public class Motorista extends Ator implements Serializable
      * @param fiabilidade
      * @param dif
      */
+
+    //TODO alterar dif para grau
     public void atualizaDados(Coordenada novaLoc, double distPercorrida, double fiabilidade, double dif){
         this.kmsTotais += distPercorrida;
         this.taxi.setCoordenadas(novaLoc);

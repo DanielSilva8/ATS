@@ -3,6 +3,7 @@ package utilizador;
 
 import exceptions.InvalidIntervalException;
 import exceptions.NenhumaViagemException;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utilizadores.Ator;
@@ -107,5 +108,10 @@ public class AtorTestes {
         assertEquals(ator.compareTo(b), 1);
         assertEquals(ator.compareTo(c), -1);
 
+    }
+    @AfterClass
+    public void after() {
+        int i = this.ator.hashCode();
+        String g = this.ator.toString();
     }
 }

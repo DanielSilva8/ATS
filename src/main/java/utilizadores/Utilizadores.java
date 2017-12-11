@@ -23,7 +23,6 @@ public class Utilizadores implements Serializable
 {
     // variáveis de instância;
     private Map<String,Ator> atores; //String = email: Identificador do utilizador
-    
     /**
      * Construtor Vazio.
      */

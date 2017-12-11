@@ -1,5 +1,6 @@
 package viagem;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -76,6 +77,11 @@ public class ViagemTestes {
                 "\nDesvio entre o valor previsto e o preço real faturado: 3$00";
 
         assertEquals(viagem1.toString(), x);
+    }
+    @AfterClass
+    public void after() {
+        int i = this.viagem1.hashCode();
+       String g =  this.viagem1.toString();
     }
 
 }

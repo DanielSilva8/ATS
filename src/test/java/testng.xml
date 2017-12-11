@@ -29,6 +29,12 @@
             <class name = "viagem.ViagemTestes"/>
         </classes>
     </test>
+    <test name = "Testes da App">
+        <classes>
+            <class name = "AppTestes"/>
+        </classes>
+    </test>
+
     <test name = "Outros Testes">
         <classes>
             <class name = "outros.CoordenadaTestes"/>
