@@ -5,8 +5,7 @@ package utils;
  * @author (seu nome) 
  * @version (número de versão ou data)
  */
-import viagem.Viagem;
-
+import models.viagem.Viagem;
 import java.util.Comparator;
 
 public class ComparadorDesvio implements Comparator<Viagem>

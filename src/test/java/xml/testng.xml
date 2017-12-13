@@ -4,9 +4,9 @@
 <suite name = "UMeR - Unitários">
     <test name = "Testes do Menu">
         <classes>
-            <class name = "menu.RegistoTestes"/>
-            <class name = "menu.LoginTestes"/>
-            <class name = "menu.OutrosLoginTestes"/>
+            <class name = "views.RegistoTestes"/>
+            <class name = "views.LoginTestes"/>
+            <class name = "views.OutrosLoginTestes"/>
         </classes>
     </test>
     <test name = "Teste do Utilizador">
@@ -27,7 +27,7 @@
     </test>
     <test name = "Testes da Viagem">
         <classes>
-            <class name = "viagem.ViagemTestes"/>
+            <class name = "models.viagem.ViagemTestes"/>
         </classes>
     </test>
     <test name = "Testes da App">

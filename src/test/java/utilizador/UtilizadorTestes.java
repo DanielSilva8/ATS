@@ -1,18 +1,16 @@
 package utilizador;
 
 import exceptions.EmailAlreadyInUseException;
-import exceptions.EmailDoesNotExistException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilizadores.Ator;
-import utilizadores.Cliente;
-import utilizadores.Motorista;
-import utilizadores.Utilizadores;
+import models.utilizadores.Cliente;
+import models.utilizadores.Motorista;
+import models.utilizadores.Utilizadores;
 import utils.Coordenada;
-import veiculos.Carro;
-import veiculos.Veiculo;
-import viagem.Viagem;
+import models.veiculos.Carro;
+import models.veiculos.Veiculo;
+import models.viagem.Viagem;
 
 import java.util.*;
 

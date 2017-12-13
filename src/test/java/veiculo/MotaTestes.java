@@ -4,12 +4,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Coordenada;
-import veiculos.Mota;
+import models.veiculos.Mota;
 
 import java.util.ArrayList;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 /**
  * Created by danys on 09-Dec-17.
@@ -22,7 +21,7 @@ public class MotaTestes {
 
     @BeforeClass
     public void before(){
-        m = new Mota();
+        m = new Mota(10,10,10,"matricula2",new Coordenada(3,5),false);
         m1 = new Mota(10,10,10,"matricula",new Coordenada(3,5),false);
         m2 = new Mota(m1);
     }

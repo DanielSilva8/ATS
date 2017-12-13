@@ -2,13 +2,9 @@ package outros;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilizadores.Cliente;
-import utils.ComparadorDesvio;
+import models.utilizadores.Cliente;
 import utils.ComparadorGastoDescrescente;
-import utils.Coordenada;
-import viagem.Viagem;
 
-import java.util.GregorianCalendar;
 import java.util.TreeSet;
 
 import static org.testng.Assert.assertEquals;

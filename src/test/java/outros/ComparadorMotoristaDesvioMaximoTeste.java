@@ -2,13 +2,11 @@ package outros;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilizadores.Cliente;
-import utilizadores.Motorista;
-import utils.ComparadorGastoDescrescente;
+import models.utilizadores.Motorista;
 import utils.ComparadorMotoristaDesvioMaximo;
 import utils.Coordenada;
-import veiculos.Mota;
-import viagem.Viagem;
+import models.veiculos.Mota;
+import models.viagem.Viagem;
 
 import java.util.GregorianCalendar;
 import java.util.Set;

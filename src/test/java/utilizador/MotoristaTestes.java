@@ -4,12 +4,11 @@ import exceptions.ValueOutOfBoundsException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilizadores.Cliente;
-import utilizadores.Motorista;
+import models.utilizadores.Motorista;
 import utils.Coordenada;
-import veiculos.Carro;
-import veiculos.Veiculo;
-import viagem.Viagem;
+import models.veiculos.Carro;
+import models.veiculos.Veiculo;
+import models.viagem.Viagem;
 
 import java.util.GregorianCalendar;
 import java.util.TreeSet;

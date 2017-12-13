@@ -4,8 +4,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Coordenada;
-import veiculos.Carro;
-import veiculos.Mota;
+import models.veiculos.Carro;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.ComparadorDesvio;
 import utils.Coordenada;
-import viagem.Viagem;
+import models.viagem.Viagem;
 
 import java.util.GregorianCalendar;
 

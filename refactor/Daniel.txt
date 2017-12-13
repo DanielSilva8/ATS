@@ -1,0 +1,5 @@
+Estrutração das classes por diretorias
+Classe Registo - Duplicação de código
+ComparadorGastoDescrescente - Operador Ternário
+ComparadorMotoristaDesvioMáximo - Remover if...else ( desnecessário) - Remover aux (desnecessário)
+Coordenada - int para double - compareTo-trocar ifs&elses por operador ternário

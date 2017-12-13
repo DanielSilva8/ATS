@@ -3,10 +3,9 @@ package utilizador;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilizadores.Ator;
-import utilizadores.Cliente;
+import models.utilizadores.Cliente;
 import utils.Coordenada;
-import viagem.Viagem;
+import models.viagem.Viagem;
 
 import java.util.GregorianCalendar;
 import java.util.TreeSet;

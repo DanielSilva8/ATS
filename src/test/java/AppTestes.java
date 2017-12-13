@@ -4,21 +4,16 @@ import exceptions.EmailAlreadyInUseException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilizadores.Cliente;
-import utilizadores.Motorista;
-import utilizadores.Utilizadores;
+import models.utilizadores.Cliente;
+import models.utilizadores.Motorista;
+import models.utilizadores.Utilizadores;
 import utils.Coordenada;
-import veiculos.Carro;
-import veiculos.Veiculo;
-import viagem.Viagem;
+import models.veiculos.Carro;
+import models.veiculos.Veiculo;
+import models.viagem.Viagem;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.TreeSet;
 
 import static org.testng.Assert.assertEquals;
@@ -51,40 +46,6 @@ public class AppTestes {
         }catch (EmailAlreadyInUseException e){
             e.getStackTrace();
         }
-
-
-
-    }
-
-    @Test
-    public void guardaEstadotest(){
-
-        try{
-            app.guardaEstado("teste.txt");
-        }catch(IOException e){
-            e.getStackTrace();
-        }
-    }
-
-    @Test
-    public void escreverEmFicheiroEstadotest(){
-
-        try{
-            app.escreveEmFicheiroTxt("teste.txt");
-        }catch(IOException e){
-            e.getStackTrace();
-        }
-    }
-    @Test
-    public void carregaEstadotest(){
-
-        try{
-            app.carregaEstado("teste.txt");
-        }catch(IOException e){
-            e.getStackTrace();
-        }catch (ClassNotFoundException e){
-            e.getStackTrace();
-        }
     }
 
     @Test
@@ -92,34 +53,15 @@ public class AppTestes {
         String data2 = "0\r\n";
         try {
             System.setIn(new ByteArrayInputStream(data2.getBytes()));
-            app.run();
+           // app.run();
 
         } finally {
             System.setIn(System.in);
         }
-    }
-    @Test
-    public void funcionalidadesTeste(){
-        String data = "1";
-        try {
-            System.setIn(new ByteArrayInputStream(data.getBytes()));
-            app.funcionalidades();
-
-        } finally {
-            System.setIn(System.in);
-        }
-        int a = 2;
     }
 
     @AfterClass
     public void after(){
         String qq = "";
-
-        app.top10ClientesGastadores();
-        app.top5MotoristasComMaiorDesvio();
-        app.listarVeiculos();
-        app.trataListarUtilizadores();
-
-
     }
 }
