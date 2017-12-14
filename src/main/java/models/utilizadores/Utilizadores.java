@@ -1,10 +1,4 @@
 package models.utilizadores;
-/**
- * Escreva a descrição da classe Utilizadores aqui.
- * 
- * @author (seu nome) 
- * @version (número de versão ou data)
- */
 
 import exceptions.EmailAlreadyInUseException;
 import exceptions.EmailDoesNotExistException;

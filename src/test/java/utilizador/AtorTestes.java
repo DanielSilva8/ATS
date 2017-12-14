@@ -3,13 +3,13 @@ package utilizador;
 
 import exceptions.InvalidIntervalException;
 import exceptions.NenhumaViagemException;
+import models.utilizadores.Ator;
+import models.utilizadores.Cliente;
+import models.viagem.Viagem;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import models.utilizadores.Ator;
-import models.utilizadores.Cliente;
 import utils.Coordenada;
-import models.viagem.Viagem;
 
 
 import java.util.*;
@@ -19,22 +19,22 @@ import static org.testng.Assert.assertEquals;
 
 public class AtorTestes {
 
-   private  TreeSet<Viagem> viagens = new TreeSet();
+    private  TreeSet<Viagem> viagens = new TreeSet();
 
     private Coordenada cinicial1 = new Coordenada(1, 1);
     private Coordenada cfinal1 = new Coordenada(2, 2);
     private Viagem viagem1 = new Viagem(cinicial1,cfinal1,200,"mail1", new GregorianCalendar(1995,11,10),100,3);
-   private Viagem viagem2 = new Viagem(cinicial1,cfinal1,400,"mail2", new GregorianCalendar(1995,11,12),200,4);
-   private Viagem viagem3 = new Viagem(cinicial1,cfinal1,400,"mail2", new GregorianCalendar(1995,11,15),200,5);
+    private Viagem viagem2 = new Viagem(cinicial1,cfinal1,400,"mail2", new GregorianCalendar(1995,11,12),200,4);
+    private Viagem viagem3 = new Viagem(cinicial1,cfinal1,400,"mail2", new GregorianCalendar(1995,11,15),200,5);
 
 
-   private Ator ator = new Cliente();
+    private Ator ator = new Cliente();
 
 
     @BeforeClass
     public void before() {
 
-       viagens.add(viagem1);
+        viagens.add(viagem1);
         viagens.add(viagem2);
         viagens.add(viagem3);
 
@@ -73,8 +73,8 @@ public class AtorTestes {
     @Test
     public void equalsTeste(){
 
-    Ator a = ator.clone();
-    Ator b = new Cliente("mail2", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
+        Ator a = this.ator.clone();
+        Ator b = new Cliente("mail2", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
         assertEquals(ator.equals(a), true);
         assertEquals(ator.equals(b), false);
 

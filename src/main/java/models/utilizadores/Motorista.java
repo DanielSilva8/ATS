@@ -7,10 +7,10 @@ package models.utilizadores;
  */
 
 import exceptions.ValueOutOfBoundsException;
+
 import utils.Coordenada;
 import models.veiculos.Veiculo;
 import models.viagem.Viagem;
-
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.Set;
@@ -18,17 +18,14 @@ import java.util.TreeSet;
 
 public class Motorista extends Ator implements Serializable
 {
-    // variáveis de instância 
-    private int grau; //Grau de cumprimento de horário estabelecido com o cliente, dado por um fator entre 0 e 100.
-    private int classificacao; //Classificação do motorista, calculada com base na classificacao pelo cliente no final viagem.
-    private int numClassi; //Número de classificações feitas ao cliente.
-    private double kmsTotais; //Número de kms ja realizados na UMeR
-    private boolean disponivel; //true -> o motorista está em horario de trabalho; false caso contrário
-    private Veiculo taxi; //Veiculo utilizado pelo motorista.
-    
-    /**
-     * Construtor Vazio
-     */
+
+    private int grau;
+    private int classificacao;
+    private int numClassi;
+    private double kmsTotais;
+    private boolean disponivel;
+    private Veiculo taxi;
+
     public Motorista(){
         super();
         this.grau = this.classificacao = this.numClassi = 0;
@@ -36,11 +33,7 @@ public class Motorista extends Ator implements Serializable
         this.disponivel = false;
         this.taxi = null;
     }
-    
-    /**
-     * Construtor por cópia.
-     * @param m
-     */
+
     public Motorista(Motorista m){
         super(m);
         this.grau = m.getGrau();
@@ -104,7 +97,6 @@ public class Motorista extends Ator implements Serializable
     public void atualizaClassificacao(int classi) throws ValueOutOfBoundsException {
         if(classi < 0 || classi > 100) throw new ValueOutOfBoundsException();
         else{
-            //Primeira classificação ao motorista
             if(this.numClassi == 0){
                 this.classificacao = classi;
                 this.numClassi++;
@@ -125,13 +117,12 @@ public class Motorista extends Ator implements Serializable
         return this.taxi.getPrecoBase()*dist;
     }
 
-    //TODO alterar dif para grau
-    public void atualizaDados(Coordenada novaLoc, double distPercorrida, double fiabilidade, double dif){
+    public void atualizaDados(Coordenada novaLoc, double distPercorrida, double fiabilidade, double grau){
         this.kmsTotais += distPercorrida;
         this.taxi.setCoordenadas(novaLoc);
-        this.grau = (int)((this.grau * (this.getHistorico().size()-1) + 100*dif)/ this.getHistorico().size());
+        this.grau = (int)((this.grau * (this.getHistorico().size()-1) + 100*grau)/this.getHistorico().size());
         this.taxi.setFiabilidade((int)(fiabilidade*100));
-        this.disponivel = true; //Após realizar a viagem o motorista volta a estar disponível para ser solicitado por outro cliente.
+        this.disponivel = true;
     }
 
     public double totalFaturado(){
@@ -150,11 +141,8 @@ public class Motorista extends Ator implements Serializable
     //Métodos usuais
     public boolean equals(Object o){
         if(o == this) return true;
-        
         if(o == null || (o.getClass() != this.getClass())) return false;
-        
         Motorista m = (Motorista)o;
-        
         return super.equals(m) && (this.hashCode() == m.hashCode()) && (this.grau == m.getGrau()) 
                                && (this.classificacao == m.getClassificacao()) && (this.kmsTotais == m.getKmsTotais()) 
                                && (this.disponivel == m.getDisponibilidade()) && this.taxi.equals(m.getVeiculo());
@@ -162,7 +150,6 @@ public class Motorista extends Ator implements Serializable
 
     public int hashCode(){
         int hash = 7;
-        
         hash = 37*hash + super.hashCode();
         hash = 37*hash + this.grau;
         hash = 37*hash + this.classificacao;
