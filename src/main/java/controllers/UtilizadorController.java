@@ -64,10 +64,8 @@ public class UtilizadorController {
             return true;
         }
         catch(EmailAlreadyInUseException e){
-            e.printStackTrace();
             return false;
         }
-
     }
 
     @Testable

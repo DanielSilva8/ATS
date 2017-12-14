@@ -2,13 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name = "UMeR - Unitários">
-    <test name = "Testes do Menu">
-        <classes>
-            <class name = "views.RegistoTestes"/>
-            <class name = "views.LoginTestes"/>
-            <class name = "views.OutrosLoginTestes"/>
-        </classes>
-    </test>
+
     <test name = "Teste do Utilizador">
         <classes>
             <class name = "utilizador.UtilizadorTestes"/>
@@ -27,7 +21,7 @@
     </test>
     <test name = "Testes da Viagem">
         <classes>
-            <class name = "models.viagem.ViagemTestes"/>
+            <class name = "viagem.ViagemTestes"/>
         </classes>
     </test>
     <test name = "Testes da App">
@@ -36,14 +30,9 @@
         </classes>
     </test>
 
-    <test name = "Testes do Sistema">
-        <classes>
-            <class name = "SistemaTestes"/>
-        </classes>
-    </test>
-
     <test name = "Outros Testes">
         <classes>
+            <class name = "outros.FuncionalidadesTestes"/>
             <class name = "outros.CoordenadaTestes"/>
             <class name = "outros.ComparadorDesvioTeste"/>
             <class name = "outros.ComparadorGastoDescrescenteTeste"/>

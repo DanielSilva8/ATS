@@ -5,7 +5,7 @@
 
     <test name = "Testes de Dados">
         <classes>
-            <class name = "SistemaTestes"/>
+            <class name = "sistema.SistemaTestes"/>
         </classes>
     </test>
 

@@ -37,6 +37,6 @@ public class ChamarViatura implements View {
         System.out.println("Insira as coordenadas de destino: ");
         Coordenada fim = Utils.coordenadaInput();
 
-        System.out.println( viagemController.realizarViagem(inicio,fim, nLugares));
+        viagemController.realizarViagem(inicio,fim, nLugares);
     }
 }

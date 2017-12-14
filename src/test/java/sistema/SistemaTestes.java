@@ -1,3 +1,6 @@
+package sistema;
+
+import models.DB;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import models.utilizadores.Utilizadores;
@@ -5,8 +8,10 @@ import utils.Coordenada;
 import models.veiculos.Mota;
 import models.veiculos.Veiculo;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.fail;
 
 /**
@@ -15,12 +20,11 @@ import static org.testng.AssertJUnit.fail;
 
 public class SistemaTestes {
 
-    App app = new App();
     Utilizadores u = new Utilizadores();
     HashMap<String,Veiculo> v = new HashMap<String,Veiculo>();
 
     @BeforeClass
-    public void injectDoubles() {
+    public void before() {
         Veiculo v2 = new Mota(10,10,10,"matricula1",new Coordenada(3,5),false);
         Veiculo v3 = new Mota(10,10,10,"matricula2",new Coordenada(3,5),false);
         Veiculo v4 = new Mota(10,10,10,"matricula",new Coordenada(3,5),false);
@@ -47,20 +51,9 @@ public class SistemaTestes {
     @Test
     public void testeDados() {
 
-//        try {
-          //  app.guardaEstado(System.getProperty("user.dir") + "/src/test/resources/AppdadosbinTest");
-          //  app.escreveEmFicheiroTxt(System.getProperty("user.dir") + "/src/test/resources/AppdadosbinTest.txt");
-          //  app.carregaEstado(System.getProperty("user.dir") + "/src/test/resources/AppdadosbinTest");
-//        } catch (IOException e) {
-//            fail("Erro ao guardar");
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            fail("Erro ao carregar");
-//            e.printStackTrace();
-//        }
+        DB.resetParaTestes(u, v);
 
-//        u.toString();
-//        assertTrue(app.getUtilizadores().equals(u));
-//        assertTrue(app.getVeiculos().equals(v));
+        assertTrue(DB.getUtilizadores().equals(u));
+        assertTrue(DB.getVeiculos().equals(v));
     }
 }
