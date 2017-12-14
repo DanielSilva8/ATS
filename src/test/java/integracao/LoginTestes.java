@@ -1,4 +1,4 @@
-package views;
+package integracao;
 
 import conf.Configuracao;
 import controllers.Sessao;

@@ -1,4 +1,4 @@
-package views;
+package outros;
 
 import exceptions.EmailAlreadyInUseException;
 import org.testng.annotations.AfterClass;
@@ -26,7 +26,7 @@ import static org.testng.Assert.*;
 /**
  * Created by danys on 10-Dec-17.
  */
-public class OutrosLoginTestes {
+public class FuncionalidadesTestes {
 
     private Motorista m;
     private Viagem v;
@@ -150,16 +150,6 @@ public class OutrosLoginTestes {
 
     @AfterClass
     public void after() {
-      //  login.verDados(m);
-      //  login.verDados(new Cliente());
-
-        String data3 = "1\r\n";
-        System.setIn(new ByteArrayInputStream(data3.getBytes()));
-      //  login.verHistorico(m);
-        m.registaViagem(v);
-        System.setIn(new ByteArrayInputStream(data3.getBytes()));
-       // login.verHistorico(m);
-
 
     }
 }

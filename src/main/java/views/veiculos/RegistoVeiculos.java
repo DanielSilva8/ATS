@@ -51,6 +51,13 @@ public class RegistoVeiculos implements View {
         System.out.print("Matricula: ");
         matricula = scin.nextLine();
 
-        new VeiculoController().registarVeiculo(matricula, vm, pb, (Integer) a);
+        VeiculoController v = new VeiculoController();
+
+        while (!v.registarVeiculo(matricula, vm, pb, (Integer) a)) {
+            System.out.println("Matricula já em uso.");
+            System.out.print("Insira uma nova matricula: ");
+            matricula = scin.nextLine();
+        }
+
     }
 }

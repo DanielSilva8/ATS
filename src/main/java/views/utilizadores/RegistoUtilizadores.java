@@ -36,25 +36,11 @@ public class RegistoUtilizadores implements View {
         data = scin.nextLine();
 
         UtilizadorController user = new UtilizadorController();
-        boolean x;
-        do{
-            x=false;
 
-            switch (tipo) {
-                case 1:
-                    x = user.registarUtilizador(email, nome, password, morada, data, tipo);
-                    break;
-                case 2:
-                    x = user.registarUtilizador(email, nome, password, morada, data, tipo);
-                    break;
-            }
-
-        if (x = false) {
-            System.out.println("Email já em uso.");
-            System.out.print("Insira um novo email: ");
+        while (!user.registarUtilizador(email, nome, password, morada, data, tipo)) {
+            System.out.println("Matricula já em uso.");
+            System.out.print("Insira uma nova matricula: ");
             email = scin.nextLine();
-            x=true;
         }
-        }while(!x);
     }
 }

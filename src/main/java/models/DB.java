@@ -78,6 +78,7 @@ public class DB {
     public static boolean adicionaVeiculo(Veiculo veiculo){
         if(veiculos.containsKey(veiculo.getMatricula()))
             return false;
+
         veiculos.put(veiculo.getMatricula(), veiculo);
         return true;
     }
@@ -109,7 +110,7 @@ public class DB {
         Configuracao.setCaminhoTxt("/src/test/resources/AppdadosbinTest.txt");
 
         setUtilizadores(new Utilizadores());
-        setVeiculos(null);
+        setVeiculos(new HashMap<String,Veiculo>());
         termina();
 
         if (_utilizadores != null) setUtilizadores(_utilizadores);

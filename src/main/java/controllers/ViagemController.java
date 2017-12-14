@@ -8,11 +8,10 @@ import models.utilizadores.Motorista;
 import models.utilizadores.Utilizadores;
 import models.viagem.Viagem;
 import utils.Coordenada;
+import views.View;
+import views.veiculos.RealizarViagem;
 
-import java.util.GregorianCalendar;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by danys on 12-Dec-17.
@@ -30,71 +29,26 @@ public class ViagemController {
         return email;
     }
 
-    public String realizarViagem( Coordenada inicio, Coordenada fim, int nLugares){
+    public void realizarViagem( Coordenada inicio, Coordenada fim, int nLugares){
+        View v = new RealizarViagem();
 
         String emailmotorista = closerMotorista(inicio, nLugares);
+        if (emailmotorista == null) v.executa(null);
 
-        if(emailmotorista==null){
-            return "Não existem motoristas que cumpram os seus requisitos disponíveis de momento.";
-        }
-        else{
-            try{
-                Motorista m =  (Motorista) DB.getUtilizadores().getAtor(emailmotorista);
-                Cliente c = (Cliente) Sessao.getUtilizador();
-                double distanciaAteCliente = inicio.distancia(m.getVeiculo().getCoordenadas());
-                m.setDisponibilidade(false);
-                double distanciaViagem = inicio.distancia(fim);
-                double tempoTotalEsperado = m.tempoViagem(distanciaViagem + distanciaAteCliente);
+        List<Object> lista = new ArrayList<>();
 
-                /** Calcula-se aqui o tempo real tendo em conta os condicionantes.*/
-                Random r = new Random();
-                double fiab = r.nextDouble() * (1+(double)(m.getVeiculo().getFiabilidade()/100));
+        lista.add(emailmotorista);
+        lista.add(inicio);
+        lista.add(fim);
 
-                if(fiab > 1) fiab = 1; /** Garantimos que a fiabilidade não passa de 100 */
+        v.executa(lista);
+    }
 
-                double tempoReal = tempoTotalEsperado + (1 - fiab)*tempoTotalEsperado;
+    public void guardaViagem(Coordenada inicio, Coordenada fim, double preco, Motorista m, double distanciaAteCliente, double distanciaViagem, double fiab, double tempoReal, double tempoTotalEsperado, double diferenca) {
 
-                double preco = m.precoViagem(distanciaViagem);
-
-                double diferenca = tempoReal - tempoTotalEsperado;
-
-                if(diferenca > 0.25 * tempoTotalEsperado){
-                    System.out.println("Desculpe pelo atraso, terá um desconto de "+String.format("%.2f",50*diferenca/tempoTotalEsperado)+"%.");
-                    preco = preco*(diferenca/tempoTotalEsperado);
-                }
-                System.out.println("Preço a pagar: "+ String.format("%.2f",preco)+"€");
-                /** Atualização do dinheiro total investido no sistema UMeR por este cliente. */
-                c.setMS(c.getMS() + preco);
-
-                System.out.println("Atribua ao motorista um classificação entre 0 e 100.");
-                Scanner sc = new Scanner(System.in);
-                int classificacao;
-                boolean flag = true;
-                do{
-                    try{
-                        classificacao = sc.nextInt();
-                    }
-                    catch (InputMismatchException e){classificacao = (-1);}
-
-                    try{
-                        /** Atualização da classificação do motorista. */
-                        m.atualizaClassificacao(classificacao);
-                        flag = false;
-                    }
-                    catch (ValueOutOfBoundsException e){
-                        System.out.println("Por favor, introduza uma classificação válida.");
-                    }
-                }while(flag);
-
-                c.registaViagem(new Viagem(inicio, fim, tempoReal, m.getMail(), new GregorianCalendar(), preco, diferenca));
-                m.registaViagem(new Viagem(inicio, fim, tempoReal, c.getMail(), new GregorianCalendar(), preco, diferenca));
-                m.atualizaDados(fim, distanciaViagem + distanciaAteCliente, fiab, diferenca/tempoTotalEsperado);
-
-                return "O motorista " + emailmotorista +" vem a caminho.";
-            }
-            catch(EmailDoesNotExistException e){System.out.println("Unexpected Error. Estrutura corrompida?");}
-        }
-
-        return "";
+        Cliente c = (Cliente) Sessao.getUtilizador();
+        c.registaViagem(new Viagem(inicio, fim, tempoReal, m.getMail(), new GregorianCalendar(), preco, diferenca));
+        m.registaViagem(new Viagem(inicio, fim, tempoReal, c.getMail(), new GregorianCalendar(), preco, diferenca));
+        m.atualizaDados(fim, distanciaViagem + distanciaAteCliente, fiab, diferenca/tempoTotalEsperado);
     }
 }
