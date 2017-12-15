@@ -1,5 +1,6 @@
 package models.utilizadores;
 
+import annotations.Testable;
 import exceptions.InvalidIntervalException;
 import exceptions.NenhumaViagemException;
 import models.viagem.Viagem;
@@ -72,6 +73,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
         this.historico.add(rv.clone());
     }
 
+    @Testable
     public List<Viagem> viagensEntreDatas(GregorianCalendar inicio, GregorianCalendar fim) throws InvalidIntervalException {
         if(inicio.compareTo(fim) >0) throw new InvalidIntervalException();
         else{
@@ -82,6 +84,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
         }
     }
 
+    @Testable
     public Viagem maiorDesvio() throws NenhumaViagemException {
         if(this.historico.size() == 0) throw new NenhumaViagemException();
         else return this.historico.stream()
@@ -90,6 +93,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
                 .clone();
     }
 
+    @Testable
     public boolean equals(Object o){
         if(o == this) return true;
 
@@ -128,6 +132,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
 
     public abstract Ator clone();
 
+    @Testable
     public int compareTo(Ator a){
         int r;
         r = this.email.compareTo(a.getMail());

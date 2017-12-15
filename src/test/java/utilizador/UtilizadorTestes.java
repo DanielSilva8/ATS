@@ -40,8 +40,6 @@ public class UtilizadorTestes {
         this.cliente = new Cliente("mail2", "Goncalves", "qwerty", "Braga", "29-09-1995", viagens, 11);
         this.motorista = new Motorista("email", "Leonel", "password", "Portugal", "29-09-1995", viagens, 80, 80, 2, 1200, true, veiculo);
 
-
-
         try{
             a.adiciona(this.motorista);
             a.adiciona(this.cliente);
@@ -60,7 +58,6 @@ public class UtilizadorTestes {
         expected.add(this.cliente);
 
             assertEquals(clientes,expected);
-
     }
 
     @Test
@@ -107,7 +104,7 @@ public class UtilizadorTestes {
 
     @AfterClass
     public void after() {
-        int i = this.motorista.hashCode();
-        String g = this.motorista.toString();
+        motorista.hashCode();
+        motorista.toString();
     }
 }

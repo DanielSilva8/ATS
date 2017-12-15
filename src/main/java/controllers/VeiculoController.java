@@ -1,5 +1,6 @@
 package controllers;
 
+import annotations.Testable;
 import exceptions.EmailDoesNotExistException;
 import models.DB;
 import models.utilizadores.Cliente;
@@ -21,6 +22,7 @@ import java.util.*;
  */
 public class VeiculoController {
 
+    @Testable
     public boolean registarVeiculo(String matricula, int velocidademedia, double precobase, int tipo){
 
         boolean x = true;

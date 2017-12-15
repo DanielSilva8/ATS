@@ -76,10 +76,8 @@ public class MotoristaTestes {
     @Test
     public void EqualsTeste(){
 
-    Motorista m1 = new Motorista();
         assertTrue(this.motorista.equals(this.motorista));
         assertFalse(this.motorista.equals(null));
-        assertFalse(this.motorista.equals(m1));
     }
     @Test
     public void CompareToTeste(){

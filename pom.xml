@@ -21,14 +21,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -69,6 +61,8 @@
                         <exclude>**/views/**</exclude>
                         <exclude>**/annotations/*</exclude>
                         <exclude>**/conf/**</exclude>
+                        <exclude>App.class</exclude>
+                        <exclude>**/utils/*</exclude>
                     </excludes>
                 </configuration>
 
@@ -81,6 +75,13 @@
                         <id>default-report</id>
                         <phase>prepare-package</phase>
                         <goals><goal>report</goal></goals>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

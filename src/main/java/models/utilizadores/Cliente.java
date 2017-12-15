@@ -1,5 +1,6 @@
 package models.utilizadores;
 
+import annotations.Testable;
 import models.viagem.Viagem;
 import java.io.Serializable;
 import java.util.Set;
@@ -38,6 +39,7 @@ public class Cliente extends Ator implements Serializable
         this.moneySpent = ms;
     }
 
+    @Testable
     public boolean equals(Object o){
         if(o == this) return true;
 
@@ -71,6 +73,7 @@ public class Cliente extends Ator implements Serializable
         return new Cliente(this);
     }
 
+    @Testable
     public int compareTo(Cliente c){
         int r = super.compareTo(c);
 

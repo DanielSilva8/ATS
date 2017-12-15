@@ -1,5 +1,6 @@
 package viagem;
 
+import controllers.ViagemController;
 import models.viagem.Viagem;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -37,8 +38,15 @@ public class ViagemTestes {
 
     @AfterClass
     public void after() {
-        int i = this.viagem1.hashCode();
-       String g =  this.viagem1.toString();
+        this.viagem1.hashCode();
+        this.viagem1.toString();
+        viagem1.setcfinal(new Coordenada(0,0));
+        viagem1.setcinicial(new Coordenada(0,0));
+        viagem1.setTempo(0);
+        viagem1.setDesvio(0);
+        viagem1.setMail("f");
+        viagem1.setPreco(0);
+        new Viagem();
     }
 
 }

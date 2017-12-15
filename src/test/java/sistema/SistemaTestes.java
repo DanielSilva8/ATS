@@ -52,7 +52,6 @@ public class SistemaTestes {
     public void testeDados() {
 
         DB.resetParaTestes(u, v);
-
         assertTrue(DB.getUtilizadores().equals(u));
         assertTrue(DB.getVeiculos().equals(v));
     }

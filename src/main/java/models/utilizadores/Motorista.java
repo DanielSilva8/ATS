@@ -6,6 +6,7 @@ package models.utilizadores;
  * @version (número de versão ou data)
  */
 
+import annotations.Testable;
 import exceptions.ValueOutOfBoundsException;
 
 import utils.Coordenada;
@@ -125,20 +126,22 @@ public class Motorista extends Ator implements Serializable
         this.disponivel = true;
     }
 
+    @Testable
     public double totalFaturado(){
         return this.getHistorico().stream()
                                   .mapToDouble(Viagem :: getPreco)
                                   .sum();
     }
 
+    @Testable
     public double totalFaturado(GregorianCalendar inicio, GregorianCalendar fim){
         return this.getHistorico().stream()
                                   .filter(v -> v.getData().compareTo(inicio) >= 0 && v.getData().compareTo(fim) <= 0)
                                   .mapToDouble(Viagem :: getPreco)
                                   .sum();
     }
-    
-    //Métodos usuais
+
+    @Testable
     public boolean equals(Object o){
         if(o == this) return true;
         if(o == null || (o.getClass() != this.getClass())) return false;
@@ -177,6 +180,7 @@ public class Motorista extends Ator implements Serializable
         return new Motorista(this);
     }
 
+    @Testable
     public int compareTo(Motorista m){
         int r;
         r = super.compareTo(m);

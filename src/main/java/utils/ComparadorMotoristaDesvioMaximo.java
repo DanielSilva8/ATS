@@ -5,6 +5,7 @@ package utils;
  * @author (seu nome) 
  * @version (número de versão ou data)
  */
+import annotations.Testable;
 import exceptions.NenhumaViagemException;
 import models.utilizadores.Motorista;
 
@@ -12,6 +13,7 @@ import java.util.Comparator;
 
 public class ComparadorMotoristaDesvioMaximo implements Comparator<Motorista>
 {
+    @Testable
     public int compare(Motorista m1, Motorista m2){
         double dMAX1 = 0;
         double dMAX2 = 0;

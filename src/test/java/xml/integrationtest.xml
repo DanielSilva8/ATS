@@ -3,10 +3,21 @@
 
 <suite name = "UMeR - Integração">
 
-    <test name = "Testes do Menu">
+    <test name = "Testes do Registo">
         <classes>
             <class name = "integracao.RegistoTestes"/>
+        </classes>
+    </test>
+
+    <test name = "Testes do Login">
+        <classes>
             <class name = "integracao.LoginTestes"/>
+        </classes>
+    </test>
+
+    <test name = "Testes de Funcionalidades">
+        <classes>
+            <class name = "integracao.FuncionalidadesTestes"/>
         </classes>
     </test>
 

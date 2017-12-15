@@ -1,5 +1,6 @@
 package controllers;
 
+import annotations.Testable;
 import exceptions.EmailDoesNotExistException;
 import exceptions.ValueOutOfBoundsException;
 import models.DB;
@@ -18,13 +19,21 @@ import java.util.*;
  */
 public class ViagemController {
 
+    @Testable
     public String closerMotorista(Coordenada loc, int nLugares){
         String email = null;
         int d=Integer.MAX_VALUE;
+        double distancia = Double.MAX_VALUE;
 
         for(Motorista m : DB.getMotoristas()){
             if(m.getDisponibilidade() && m.getVeiculo().getLugares() >= nLugares && d>m.getVeiculo().getCoordenadas().distancia(loc))
-                email = m.getMail();
+            {
+                if (m.getVeiculo().getCoordenadas().distancia(loc)<distancia ) {
+                    email = m.getMail();
+                    distancia = m.getVeiculo().getCoordenadas().distancia(loc);
+                }
+            }
+
         }
         return email;
     }
@@ -44,6 +53,7 @@ public class ViagemController {
         v.executa(lista);
     }
 
+    @Testable
     public void guardaViagem(Coordenada inicio, Coordenada fim, double preco, Motorista m, double distanciaAteCliente, double distanciaViagem, double fiab, double tempoReal, double tempoTotalEsperado, double diferenca) {
 
         Cliente c = (Cliente) Sessao.getUtilizador();

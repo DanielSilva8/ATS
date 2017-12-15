@@ -1,10 +1,6 @@
 package models.veiculos;
-/**
- * Write a description of class Mota here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
+import annotations.Testable;
 import utils.Coordenada;
 
 import java.io.Serializable;
@@ -27,6 +23,7 @@ public class Mota extends Veiculo implements Serializable{
         return new Mota(this);
     }
 
+    @Testable
     public boolean equals(Object o) {
         if(o == this) {
             return true;

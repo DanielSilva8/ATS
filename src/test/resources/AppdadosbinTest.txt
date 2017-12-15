@@ -3,22 +3,20 @@ E-mail: user1
 Nome: user1
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviÃ§o UMeR: 0.00
 
 E-mail: email2
 Nome: nome2
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995
-Grau de cumprimento de horário: 100
-Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
-O motorista encontra-se em horário de trabalho: false
-Veiculo:Matrícula: matricula
-Velocidade Média/km: 10km/h
-Preço Base: 10.0€
+Data de nascimento: 17-01-1995
+Grau de cumprimento de horÃ¡rio: 100
+ClassificaÃ§Ã£o do motorista: 100
+NÃºmero de Kms realizados na UMeR atÃ© ao momento: 0.00
+O motorista encontra-se em horÃ¡rio de trabalho: false
+Veiculo:MatrÃ­cula: matricula
+Velocidade MÃ©dia/km: 10km/h
+PreÃ§o Base: 10.0â‚¬
 Fiabilidade: 10
 Lugares: 1
 Coordenadas: Coordenada X: 3.0 Coordenada Y: 5.0
@@ -28,22 +26,20 @@ E-mail: user2
 Nome: user2
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviÃ§o UMeR: 0.00
 
 E-mail: email1
 Nome: nome1
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995
-Grau de cumprimento de horário: 100
-Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
-O motorista encontra-se em horário de trabalho: false
-Veiculo:Matrícula: matricula2
-Velocidade Média/km: 10km/h
-Preço Base: 10.0€
+Data de nascimento: 17-01-1995
+Grau de cumprimento de horÃ¡rio: 100
+ClassificaÃ§Ã£o do motorista: 100
+NÃºmero de Kms realizados na UMeR atÃ© ao momento: 0.00
+O motorista encontra-se em horÃ¡rio de trabalho: false
+Veiculo:MatrÃ­cula: matricula2
+Velocidade MÃ©dia/km: 10km/h
+PreÃ§o Base: 10.0â‚¬
 Fiabilidade: 10
 Lugares: 1
 Coordenadas: Coordenada X: 3.0 Coordenada Y: 5.0
@@ -53,22 +49,20 @@ E-mail: user
 Nome: user
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviÃ§o UMeR: 0.00
 
 E-mail: email
 Nome: nome
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995
-Grau de cumprimento de horário: 100
-Classificação do motorista: 100
-Número de Kms realizados na UMeR até ao momento: 0.00
-O motorista encontra-se em horário de trabalho: false
-Veiculo:Matrícula: matricula1
-Velocidade Média/km: 10km/h
-Preço Base: 10.0€
+Data de nascimento: 17-01-1995
+Grau de cumprimento de horÃ¡rio: 100
+ClassificaÃ§Ã£o do motorista: 100
+NÃºmero de Kms realizados na UMeR atÃ© ao momento: 0.00
+O motorista encontra-se em horÃ¡rio de trabalho: false
+Veiculo:MatrÃ­cula: matricula1
+Velocidade MÃ©dia/km: 10km/h
+PreÃ§o Base: 10.0â‚¬
 Fiabilidade: 10
 Lugares: 1
 Coordenadas: Coordenada X: 3.0 Coordenada Y: 5.0
@@ -78,7 +72,6 @@ E-mail: user3
 Nome: user3
 Password: password
 Morada: morada
-Data de nascimento: 
-17-01-1995Montante de dinheiro utilizado no serviço UMeR: 0.00
+Data de nascimento: 17-01-1995Montante de dinheiro utilizado no serviÃ§o UMeR: 0.00
 
 

@@ -5,6 +5,7 @@ package models.veiculos;
  * @author (your name) 
  * @version (a version number or a date)
  */
+import annotations.Testable;
 import utils.Coordenada;
 
 import java.io.Serializable;
@@ -27,6 +28,7 @@ public class Carrinha extends Veiculo implements Serializable{
         return new Carrinha(this);
     }
 
+    @Testable
     public boolean equals(Object o) {
         if(o == this) {
             return true;

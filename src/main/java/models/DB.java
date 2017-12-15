@@ -1,5 +1,6 @@
 package models;
 
+import annotations.Testable;
 import conf.Configuracao;
 import exceptions.EmailAlreadyInUseException;
 import models.utilizadores.Ator;
@@ -15,9 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by danys on 12-Dec-17.
- */
 public class DB {
     private static Utilizadores utilizadores = new Utilizadores();
     private static HashMap<String,Veiculo> veiculos = new HashMap<>();
@@ -52,15 +50,19 @@ public class DB {
     public static HashMap<String, Veiculo> getVeiculos() {
         return veiculos;
     }
-    public static void setVeiculos(HashMap<String, Veiculo> veiculos) {
-        DB.veiculos = veiculos;
+
+    public static void setVeiculos(HashMap<String, Veiculo> _veiculos) {
+        veiculos = _veiculos;
     }
-    public static void setUtilizadores(Utilizadores utilizadores) {
-        DB.utilizadores = utilizadores;
+
+    public static void setUtilizadores(Utilizadores _utilizadores) {
+        utilizadores = _utilizadores;
     }
+
     public static Utilizadores getUtilizadores() {
         return utilizadores;
     }
+
     public static List<Motorista> getMotoristas() {
         List<Motorista> m = new ArrayList<Motorista>();
         for (Map.Entry<String,Ator> entry: utilizadores.getUtilizadores().entrySet()) {
@@ -69,12 +71,15 @@ public class DB {
         }
         return m;
     }
+
     public static void adicionaCliente(String email, String nome, String password, String morada, String data) throws EmailAlreadyInUseException {
             utilizadores.adiciona(email, nome, password, morada, data);
     }
+
     public static void adicionaMotorista(String email, String nome, String password, String morada, String data) throws EmailAlreadyInUseException {
             utilizadores.adiciona(email, nome, password, morada, data, null);
     }
+
     public static boolean adicionaVeiculo(Veiculo veiculo){
         if(veiculos.containsKey(veiculo.getMatricula()))
             return false;
@@ -82,6 +87,8 @@ public class DB {
         veiculos.put(veiculo.getMatricula(), veiculo);
         return true;
     }
+
+    @Testable
     public static void guardaEstado() throws IOException {
 
         FileOutputStream f = new FileOutputStream(Configuracao.getCaminhoBin());
@@ -91,6 +98,8 @@ public class DB {
         o.flush();
         o.close();
     }
+
+    @Testable
     public static void carregaEstado() throws IOException, ClassNotFoundException {
         FileInputStream f = new FileInputStream(Configuracao.getCaminhoBin());
         ObjectInputStream o = new ObjectInputStream(f);
@@ -98,12 +107,15 @@ public class DB {
         veiculos = (HashMap<String,Veiculo>) o.readObject();
         o.close();
     }
+
+    @Testable
     public static void escreveEmFicheiroTxt() throws IOException{
         PrintWriter fich = new PrintWriter(Configuracao.getCaminhoTxt());
         fich.println(utilizadores.toString());
         fich.flush();
         fich.close();
     }
+
     public static void resetParaTestes(Utilizadores _utilizadores, HashMap<String,Veiculo> _veiculos) {
 
         Configuracao.setCaminhoBin("/src/test/resources/AppdadosbinTest");

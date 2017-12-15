@@ -6,6 +6,8 @@ package utils;
  * @author (seu nome) 
  * @version v1(02052017)
  */
+import annotations.Testable;
+
 import java.io.Serializable;
 
 public class Coordenada implements Serializable
@@ -45,10 +47,12 @@ public class Coordenada implements Serializable
         return hash;
     }
 
+    @Testable
     public int compareTo(Coordenada b){
         return this.coorX == b.getX() ? (this.coorY==b.getY() ? 0 : this.coorY < b.getY() ? 1 : -1) : (this.coorX<b.getX() ? 1 : -1);
     }
 
+    @Testable
     public boolean equals(Object o) {
         if(o==this)
             return true;
@@ -62,12 +66,14 @@ public class Coordenada implements Serializable
         return new Coordenada(this);
     }
 
+    @Testable
     public String toString(){
         StringBuilder s = new StringBuilder();
         s.append("Coordenada X: "+coorX+" Coordenada Y: "+coorY);
         return s.toString();
     }
 
+    @Testable
     public double distancia(Coordenada b){
         return  Math.sqrt( Math.pow( (coorX - b.getX()),2 ) + Math.pow( (coorY - b.getY()),2 ) );
     }

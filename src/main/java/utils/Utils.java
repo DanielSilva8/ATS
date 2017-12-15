@@ -8,6 +8,7 @@ import java.util.Scanner;
  * Created by danys on 12-Dec-17.
  */
 public class Utils {
+
     public static GregorianCalendar dataInput(){
         int anoI, mesI, diaI;
         anoI = mesI = diaI = 0;

@@ -34,6 +34,8 @@ public class UtilizadorController {
         View v = new MotoristaMontanteFaturado();
         v.executa(Sessao.getUtilizador());
     }
+
+    @Testable
     public void associarViatura(){
 
         Motorista m = (Motorista) Sessao.getUtilizador();

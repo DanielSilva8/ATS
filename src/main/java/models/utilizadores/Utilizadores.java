@@ -1,5 +1,6 @@
 package models.utilizadores;
 
+import annotations.Testable;
 import exceptions.EmailAlreadyInUseException;
 import exceptions.EmailDoesNotExistException;
 import utils.ComparadorGastoDescrescente;
@@ -61,6 +62,7 @@ public class Utilizadores implements Serializable
         else return a;
     }
 
+    @Testable
     public List<Cliente> top10ClientesGastadores(){
         return this.atores.values().stream()
                                    .filter(a -> a instanceof Cliente)
@@ -72,6 +74,7 @@ public class Utilizadores implements Serializable
                                     
     }
 
+    @Testable
     public List<Motorista> top5MotoristasComMaiorDesvio(){
         return this.atores.values().stream()
                                    .filter(a -> a instanceof Motorista)
@@ -105,6 +108,7 @@ public class Utilizadores implements Serializable
         return hash;
     }
 
+    @Testable
     public boolean equals(Object o){
         if(o == this) return true;
         
@@ -113,20 +117,22 @@ public class Utilizadores implements Serializable
         Utilizadores u = (Utilizadores) o;
         
         if(this.atores.size() != u.getUtilizadores().size() || this.hashCode() != u.hashCode()) return false;
-        
-        boolean iguais = true;
+
         Iterator<Ator> it1 = this.atores.values().iterator();
-        Iterator<Ator> it2 = u.getUtilizadores().values().iterator();
         
-        while(iguais && it1.hasNext() && it2.hasNext()){
+        while(it1.hasNext()){
             Ator a1 = it1.next();
-            Ator a2 = it2.next();
-            iguais = a1.equals(a2);
+            if (!u.getUtilizadores().containsKey(a1.getMail())) return false;
+
+            Ator a2 = u.getUtilizadores().get(a1.getMail());
+
+            if (!a2.getMail().equals(a1.getMail())) return false;
+
         }
-        
-        return iguais;
+        return true;
     }
 
+    @Testable
     public int compareTo(Utilizadores u){
         int r = 0;
         

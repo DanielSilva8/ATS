@@ -5,6 +5,7 @@ package models.veiculos;
  * @author (your name) 
  * @version (a version number or a date)
  */
+import annotations.Testable;
 import utils.Coordenada;
 
 import java.io.Serializable;
@@ -88,6 +89,7 @@ public abstract class Veiculo implements Comparable<Veiculo>, Serializable{
         this.ocupado = ocupado;
     }
 
+    @Testable
     public boolean equals(Object o) {
         if(o == this) {
             return true;
@@ -131,6 +133,7 @@ public abstract class Veiculo implements Comparable<Veiculo>, Serializable{
         return hash;
     }
 
+    @Testable
     public int compareTo(Veiculo v) {
         return v.getMatricula()
                 .compareTo(this.matricula);

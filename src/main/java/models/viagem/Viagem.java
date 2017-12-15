@@ -1,5 +1,6 @@
 package models.viagem;
 
+import annotations.Testable;
 import utils.Coordenada;
 
 import java.io.Serializable;
@@ -44,7 +45,6 @@ public class Viagem implements Comparable<Viagem>, Serializable
         this.desvio = a.getDesvio();
     }
 
-
     public void setcinicial(Coordenada i){
         this.cinicial=i;
     }
@@ -53,21 +53,18 @@ public class Viagem implements Comparable<Viagem>, Serializable
         this.cfinal=i;
     }
 
-    /**
-     * Altera o valor do tempo
-     */
     public void setTempo(double i){
         this.tempo=i;
     }
-    /**
-     * Altera o mail do ator
-     */
+
     public void setMail(String i){
         this.mail=i;
     }
+
     public void setPreco(double i){
         this.preco=i;
     }
+
     public void setDesvio(double i){
         this.desvio=i;
     }
@@ -118,6 +115,7 @@ public class Viagem implements Comparable<Viagem>, Serializable
         return hash;
     }
 
+    @Testable
     public int compareTo(Viagem b){
 
 
@@ -132,6 +130,7 @@ public class Viagem implements Comparable<Viagem>, Serializable
         return r;
     }
 
+    @Testable
     public boolean equals(Object o) {
         if(o==this)
             return true;

@@ -99,8 +99,6 @@ public class RegistoTestes {
 
     @Test(dataProvider = "registoVeiculo", priority = 4)
     public void testeRegistarVeiculoFalhado(int vm, double preco, String matricula, int tipo) {
-
-      //  "Já existe um utilizador com esse e-mail."
         assertFalse(registoV.registarVeiculo(matricula, vm, preco, tipo));
     }
 
