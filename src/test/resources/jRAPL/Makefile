@@ -1,7 +1,7 @@
 CFLAGS = -fPIC -g -c
 TARGET = *.so *.o *.class
 JAVA_HOME = $(shell readlink -f /usr/bin/javac | sed "s:bin/javac::")
-JAVA_INCLUDE = /usr/lib/jvm/java-8-openjdk-amd64/include
+JAVA_INCLUDE = $(JAVA_HOME)/include
 JAVA_INCLUDE_LINUX = $(JAVA_INCLUDE)/linux
  
 all: lib_shared_CPUScaler
