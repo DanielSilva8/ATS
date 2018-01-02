@@ -3,6 +3,7 @@ package outros;
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import rapl.jRAPLWorker;
 import utils.ComparadorDesvio;
 import utils.Coordenada;
 import models.viagem.Viagem;
@@ -31,8 +32,11 @@ public class ComparadorDesvioTeste {
     public void testeCompare() {
 
         ComparadorDesvio cd = new ComparadorDesvio();
+
+        jRAPLWorker.start("ComparadorDesvio,testeCompare");
         assertEquals(cd.compare(v,v1),0);
         assertEquals(cd.compare(v,v2),-1);
         assertEquals(cd.compare(v,v3),1);
+        jRAPLWorker.end();
     }
 }

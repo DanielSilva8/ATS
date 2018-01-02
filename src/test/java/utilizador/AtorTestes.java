@@ -9,6 +9,7 @@ import models.viagem.Viagem;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 
 
@@ -53,31 +54,37 @@ public class AtorTestes {
         viagensexpected.add(viagem1);
         viagensexpected.add(viagem2);
 
+        jRAPLWorker.start("Ator,ViagemEntreDatasTeste");
         try {
             assertEquals(ator.viagensEntreDatas(a, b), viagensexpected);
         }catch (InvalidIntervalException e){
             e.getStackTrace();
         }
+        jRAPLWorker.end();
 
     }
 
     @Test
     public void maiorDesvioTeste(){
 
+        jRAPLWorker.start("Ator,maiorDesvioTeste");
         try {
             assertEquals(ator.maiorDesvio(), viagem3);
         }catch (NenhumaViagemException e){
             e.getStackTrace();
         }
+        jRAPLWorker.end();
     }
     @Test
     public void equalsTeste(){
 
         Ator a = this.ator.clone();
         Ator b = new Cliente("mail2", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
+
+        jRAPLWorker.start("Ator,equalsTeste");
         assertEquals(ator.equals(a), true);
         assertEquals(ator.equals(b), false);
-
+        jRAPLWorker.end();
     }
 
     @Test
@@ -85,9 +92,11 @@ public class AtorTestes {
 
         Ator b = new Cliente("mail", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
         Ator c = new Cliente("mail11", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
+        jRAPLWorker.start("Cliente,compareToTest");
         assertEquals(ator.compareTo(ator), 0);
         assertEquals(ator.compareTo(b), 1);
         assertEquals(ator.compareTo(c), -1);
+        jRAPLWorker.end();
 
     }
     @AfterClass

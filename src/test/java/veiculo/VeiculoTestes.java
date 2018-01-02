@@ -8,6 +8,7 @@ import models.veiculos.Carrinha;
 import models.veiculos.Carro;
 import models.veiculos.Mota;
 import models.veiculos.Veiculo;
+import rapl.jRAPLWorker;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class VeiculoTestes {
     @BeforeClass
     public void before() {
 
+
         v = new Carro();
         v.setCoordenadas(new Coordenada(3,4));
         v.setFiabilidade(100);
@@ -41,9 +43,11 @@ public class VeiculoTestes {
 
     @Test
     public void testeEqualsObject() {
+        
         Veiculo o = new Carro((Carro) v1);
         Object o1 = new ArrayList<>();
 
+        jRAPLWorker.start("Veiculo,testeEqualsObject");
         assertFalse(v.equals(null));
         assertTrue(v.equals(v.clone()));
         assertTrue(v.equals(v1));
@@ -52,13 +56,16 @@ public class VeiculoTestes {
         assertTrue(v3.equals(v3));
         assertFalse(v3.equals(o));
         assertFalse(v2.equals(o1));
+        jRAPLWorker.end();
     }
 
     @Test
     public void testeCompareTo() {
 
+        jRAPLWorker.start("Veiculo,testeCompareTo");
         assertEquals(v.compareTo(v1),0);
         assertNotEquals(v.compareTo(v2),0);
+        jRAPLWorker.end();
     }
 
     @AfterClass

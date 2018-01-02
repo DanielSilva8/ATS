@@ -3,6 +3,7 @@ package outros;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 
 import java.util.ArrayList;
@@ -33,10 +34,12 @@ public class CoordenadaTestes {
 
     @Test
     public void testeCompareTo() {
+        jRAPLWorker.start("Coordenada,testeCompareTo");
         assertEquals(c2.compareTo(c3), 0);
         assertEquals(c2.compareTo(c4), 1);
         assertEquals(c4.compareTo(c2), -1);
         assertEquals(c2.compareTo(c1), -1);
+        jRAPLWorker.end();
     }
 
     @Test
@@ -44,10 +47,12 @@ public class CoordenadaTestes {
         Object o = new Coordenada(4,3);
         Object o1 = new ArrayList<>();
 
+        jRAPLWorker.start("Coordenada,testeEqualsObject");
         assertFalse(c2.equals(null));
         assertTrue(c2.equals(c2));
         assertTrue(c2.equals(o));
         assertFalse(c2.equals(o1));
+        jRAPLWorker.end();
     }
 
     @AfterClass

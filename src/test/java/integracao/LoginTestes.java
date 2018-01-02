@@ -13,6 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import rapl.jRAPLWorker;
+
 import java.io.IOException;
 import static org.testng.Assert.*;
 
@@ -59,15 +61,20 @@ public class LoginTestes {
     @Test(dataProvider = "loginSucesso")
     public void testeLoginSucesso(String email, String pw) {
 
+        jRAPLWorker.start("Login,testeLoginSucesso");
         assertNotEquals(user.login(email,pw), -1);
         assertTrue(Sessao.getUtilizador().getMail().equals(email));
+        jRAPLWorker.end();
+
     }
 
     @Test(dataProvider = "loginFalhado")
     public void testeLoginFalhado(String email, String pw) {
 
+        jRAPLWorker.start("Login,testeLoginFalhado");
         assertEquals(user.login(email,pw), -1);
         assertNull(Sessao.getUtilizador());
+        jRAPLWorker.end();
     }
 
 }

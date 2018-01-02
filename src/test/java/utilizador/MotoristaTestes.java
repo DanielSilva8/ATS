@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import models.utilizadores.Motorista;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 import models.veiculos.Carro;
 import models.veiculos.Veiculo;
@@ -41,7 +42,9 @@ public class MotoristaTestes {
         try{
 
             int expected = ((this.motorista.getClassificacao()*this.motorista.getNumClassi())+ 90 )/(this.motorista.getNumClassi()+1);
+            jRAPLWorker.start("Motorista,AtualizaClassificacaoTeste");
             this.motorista.atualizaClassificacao(90);
+            jRAPLWorker.end();
             assertEquals(this.motorista.getClassificacao(),expected);
 
         }catch (ValueOutOfBoundsException e){
@@ -53,31 +56,36 @@ public class MotoristaTestes {
     public void tempoViagemTeste(){
 
 
-            double expected = ((double)200/this.motorista.getVeiculo().getVelocidadeMedia());
+        double expected = ((double)200/this.motorista.getVeiculo().getVelocidadeMedia());
 
-            assertEquals(this.motorista.tempoViagem(200),expected);
-
+        jRAPLWorker.start("Motorista,tempoViagemTeste");
+        assertEquals(this.motorista.tempoViagem(200),expected);
+        jRAPLWorker.end();
     }
-
 
     @Test
     public void totalfaturadoTeste(){
 
-
+        jRAPLWorker.start("Motorista,totalfaturadoTeste");
         assertEquals(this.motorista.totalFaturado(),500.0);
+        jRAPLWorker.end();
     }
 
     @Test
     public void totalfaturadoDataTeste(){
         GregorianCalendar a = new GregorianCalendar(1995,11,9);
         GregorianCalendar b = new GregorianCalendar(1995,11,13);
+        jRAPLWorker.start("Motorista,totalfaturadoDataTeste");
         assertEquals(this.motorista.totalFaturado(a,b),300.0);
+        jRAPLWorker.end();
     }
     @Test
     public void EqualsTeste(){
 
+        jRAPLWorker.start("Motorista,EqualsTeste");
         assertTrue(this.motorista.equals(this.motorista));
         assertFalse(this.motorista.equals(null));
+        jRAPLWorker.end();
     }
     @Test
     public void CompareToTeste(){
@@ -86,9 +94,11 @@ public class MotoristaTestes {
         Motorista m2 = new Motorista("email", "Leonel", "password", "Portugal", "29-09-1995", viagens, 80, 85, 2, 1200, true, veiculo);
         Motorista m3 = new Motorista("email", "Leonel", "password", "Portugal", "29-09-1995", viagens, 80, 75, 2, 1200, true, veiculo);
 
+        jRAPLWorker.start("Motorista,CompareToTeste");
         assertEquals(this.motorista.compareTo(m1),0);
         assertEquals(this.motorista.compareTo(m2),-1);
         assertEquals(this.motorista.compareTo(m3),1);
+        jRAPLWorker.end();
     }
     @AfterClass
     public void after() {

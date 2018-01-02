@@ -13,6 +13,7 @@ import models.utilizadores.Ator;
 import models.utilizadores.Cliente;
 import models.utilizadores.Motorista;
 import models.utilizadores.Utilizadores;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 import models.veiculos.Carro;
 import models.veiculos.Mota;
@@ -86,8 +87,9 @@ public class FuncionalidadesTestes {
         Viagem v = new Viagem(new Coordenada(0,0), new Coordenada(0,0), 0, m.getMail(), new GregorianCalendar(), 0, 0);
         Motorista aux = m.clone();
 
+        jRAPLWorker.start("Funcionalidades,chamarViaturaTest");
         new ViagemController().guardaViagem(new Coordenada(0,0), new Coordenada(0,0), 0, m, 0, 0, 0, 0, 0,0);
-
+        jRAPLWorker.end();
         assertTrue(cliente.getHistorico().contains(v));
         assertTrue(m.getHistorico().contains(v));
         assertFalse(m.equals(aux));
@@ -97,7 +99,9 @@ public class FuncionalidadesTestes {
 
     @Test
     public void closerMotoristaTest() {
+        jRAPLWorker.start("Funcionalidades,closerMotoristaTest");
        assertEquals(new ViagemController().closerMotorista(new Coordenada(2,2),2), "email1" );
+        jRAPLWorker.end();
         try {
             ((Motorista) DB.getUtilizadores().getAtor("email1")).setDisponibilidade(false);
         } catch (EmailDoesNotExistException e1) {
@@ -115,7 +119,9 @@ public class FuncionalidadesTestes {
         InputStream stdin = System.in;
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
+            jRAPLWorker.start("Funcionalidades,associarViaturaTest");
             new UtilizadorController().associarViatura();
+            jRAPLWorker.end();
         } catch (Exception e) {}finally {
             System.setIn(stdin);
         }

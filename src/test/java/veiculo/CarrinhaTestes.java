@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Coordenada;
 import models.veiculos.Carrinha;
+import rapl.jRAPLWorker;
 
 import java.util.ArrayList;
 
@@ -31,10 +32,12 @@ public class CarrinhaTestes {
         Object o = new Carrinha();
         Object o1 = new ArrayList<>();
 
+        jRAPLWorker.start("Carrinha,testeEqualsObject");
         assertFalse(m2.equals(null));
         assertTrue(m2.equals(m2));
         assertFalse(m2.equals(o));
         assertFalse(m2.equals(o1));
+        jRAPLWorker.end();
     }
 
     @AfterClass

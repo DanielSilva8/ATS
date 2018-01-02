@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="jRAPL reports" content="">
+    <meta name="Daniel Silva" content="">
+
+    <title>jRAPL reports</title>
+
+    <script type="text/javascript" src="js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/canvasjs.min.js"></script>
+
+    <style type="text/css">
+        .single {
+            margin-top: 0px;}
+        .single h3.side-title {
+            margin: 0;
+            margin-bottom: 0px;
+            padding: 0;
+            font-size: 20px;
+            color: #333;
+            text-transform: uppercase; }
+        .single h3.side-title:after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: #ff6633;
+            display: block;
+            margin-top: 0px; }
+
+        .single ul {
+            margin-bottom: 0; }
+        .single li a {
+            color: #666;
+            font-size: 14px;
+            line-height: 20px;
+            display: block;
+            text-decoration: none; }
+        .single li a:hover {
+            color: #333; }
+        .single li:last-child a {
+            border-bottom: 0; }
+        a:hover {
+            background-color: #ff6633;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-header" style="background-color: #ff6633; color: black">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"> <font color="black">jRAPL</font> </a>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+
+    <div class="col-md-2" style="border-right: 6px solid #ff6633; word-wrap: break-word">
+        <h3 class="side-title" style="text-align: center">All Tests</h3>
+
+        @INSERTDATA
+
+    </div>
+    <div class="col-md-10" style="border-left: 2px solid black ">
+        <div style="padding-top: 2em"></div>
+
+        <div id="chartContainer" style="height: 500px; width: 75%; padding-left: 13%" align="center"></div>
+    </div>
+</div>
+
+<div class="container-fluid" align="right" style="background-color: #ff6633">
+    <h8 style=" color: black; text-align: right">ATS - Daniel Silva & Leonel Gonçalves </h8>
+</div>
+</body>
+
+<script>
+
+    function chart(name, old_time, old_dram, old_cpu, old_package, actual_time, actual_dram, actual_cpu, actual_package) {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            exportEnabled: false,
+            animationEnabled: true,
+            title:{
+                text: name
+            },
+            subtitles:[
+                {
+                    text: '--'
+                },
+                {
+                    text: "Time elapsed:"
+                },
+                {
+                    text: "old: " + old_time + "ms"
+                },
+                {
+                    text: "actual: " + actual_time + "ms"
+                },
+                {
+                    text: '--'
+                }
+            ],
+            axisY: {
+                title: ""
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: toggleDataSeries
+            },
+            data: [{
+                type: "column",
+                name: "Old",
+                color: "grey",
+                showInLegend: true,
+                yValueFormatString: "##0.######",
+                dataPoints: [
+                    { label: "DRAM", y: old_dram},
+                    { label: "CPU", y: old_cpu },
+                    { label: "Package",  y: old_package }
+                ]
+            },
+                {
+                    type: "column",
+                    name: "Actual",
+                    color: "#ff6633",
+                    showInLegend: true,
+                    yValueFormatString: "##0.######",
+                    dataPoints: [
+                        { label: "DRAM", y: actual_dram },
+                        { label: "CPU", y: actual_cpu },
+                        { label: "Package", y: actual_package }
+                    ]
+                }]
+        });
+        chart.render();
+
+        function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
+
+    }
+
+</script>
+</html>

@@ -14,6 +14,7 @@ import models.veiculos.Veiculo;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import rapl.jRAPLWorker;
 
 import java.util.HashMap;
 
@@ -45,8 +46,9 @@ public class RegistoTestes {
     @Test(dataProvider = "registoUtilizador", priority = 1)
     public void testeRegistarUtilizadorSucesso(String email, String nome,String pass, String morada, String nascimento, int tipo) {
 
+        jRAPLWorker.start("Registo,testeRegistarUtilizadorSucesso");
         registoU.registarUtilizador(email, nome, pass, morada,nascimento,tipo);
-
+        jRAPLWorker.end();
         Utilizadores u = DB.getUtilizadores();
         try {
             assertEquals(u.getAtor(email).getNome(), nome);
@@ -70,15 +72,18 @@ public class RegistoTestes {
     @Test(dataProvider = "registoUtilizador", priority = 2)
     public void testeRegistarUtilizadorFalhado(String email, String nome,String pass, String morada, String nascimento, int tipo) {
 
+        jRAPLWorker.start("Registo,testeRegistarUtilizadorFalhado");
         assertFalse(registoU.registarUtilizador(email, nome, pass, morada,nascimento,tipo));
+        jRAPLWorker.end();
     }
 
 
     @Test(dataProvider = "registoVeiculo", priority = 3)
     public void testeRegistarVeiculoSucesso(int vm, double preco, String matricula, int tipo ) {
 
+        jRAPLWorker.start("Registo,testeRegistarVeiculoSucesso");
         registoV.registarVeiculo(matricula, vm, preco, tipo);
-
+        jRAPLWorker.end();
         HashMap<String, Veiculo> v = DB.getVeiculos();
         assertEquals(v.get(matricula).getVelocidadeMedia(),vm);
         assertEquals(v.get(matricula).getPrecoBase(),preco);
@@ -99,7 +104,9 @@ public class RegistoTestes {
 
     @Test(dataProvider = "registoVeiculo", priority = 4)
     public void testeRegistarVeiculoFalhado(int vm, double preco, String matricula, int tipo) {
+        jRAPLWorker.start("Registo,testeRegistarVeiculoFalhado");
         assertFalse(registoV.registarVeiculo(matricula, vm, preco, tipo));
+        jRAPLWorker.end();
     }
 
 

@@ -3,6 +3,7 @@ package outros;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import models.utilizadores.Cliente;
+import rapl.jRAPLWorker;
 import utils.ComparadorGastoDescrescente;
 
 import java.util.TreeSet;
@@ -32,8 +33,10 @@ public class ComparadorGastoDescrescenteTeste {
     public void testeCompare() {
 
         ComparadorGastoDescrescente cd = new ComparadorGastoDescrescente();
+        jRAPLWorker.start("ComparadorGastoDescrescente,testeCompare");
         assertEquals(cd.compare(v,v1),0);
         assertEquals(cd.compare(v,v3),-1);
         assertEquals(cd.compare(v,v2),1);
+        jRAPLWorker.end();
     }
 }

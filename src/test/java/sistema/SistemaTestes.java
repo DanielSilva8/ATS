@@ -4,6 +4,7 @@ import models.DB;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import models.utilizadores.Utilizadores;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 import models.veiculos.Mota;
 import models.veiculos.Veiculo;
@@ -52,7 +53,10 @@ public class SistemaTestes {
     public void testeDados() {
 
         DB.resetParaTestes(u, v);
+        jRAPLWorker.start("Sistema,testeDados");
         assertTrue(DB.getUtilizadores().equals(u));
         assertTrue(DB.getVeiculos().equals(v));
+        jRAPLWorker.end();
+        jRAPLWorker.generateTargetreports();
     }
 }

@@ -3,6 +3,7 @@ package outros;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import models.utilizadores.Motorista;
+import rapl.jRAPLWorker;
 import utils.ComparadorMotoristaDesvioMaximo;
 import utils.Coordenada;
 import models.veiculos.Mota;
@@ -53,6 +54,7 @@ public class ComparadorMotoristaDesvioMaximoTeste {
 
         ComparadorMotoristaDesvioMaximo cd = new ComparadorMotoristaDesvioMaximo();
 
+        jRAPLWorker.start("ComparadorMotoristaDesvioMaximo,testeCompare");
         assertEquals(cd.compare(m,m1),0);
         assertEquals(cd.compare(m,m1),0);
         assertEquals(cd.compare(m,m3),-1);
@@ -60,6 +62,7 @@ public class ComparadorMotoristaDesvioMaximoTeste {
         assertEquals(cd.compare(m,m4),-1);
         assertEquals(cd.compare(m4,m),1);
         assertEquals(cd.compare(m4, m4.clone()),0);
+        jRAPLWorker.end();
     }
 
 

@@ -6,6 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 
 import java.util.GregorianCalendar;
@@ -25,15 +26,19 @@ public class ViagemTestes {
 
     @Test
     public void TestCompare() {
+        jRAPLWorker.start("Viagem,testeEqualsObject");
         assertEquals(viagem1.compareTo(viagem2), -1);
         assertEquals(viagem1.compareTo(viagem3), 0);
         assertEquals(viagem1.compareTo(viagem4), 1);
+        jRAPLWorker.end();
     }
 
     @Test
     public void TestEquals() {
+        jRAPLWorker.start("Viagem,testeEquals");
         assertEquals(viagem1.equals(viagem1), true);
         assertEquals(viagem1.equals(viagem2), false);
+        jRAPLWorker.end();
     }
 
     @AfterClass

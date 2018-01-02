@@ -4,6 +4,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import models.utilizadores.Cliente;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 import models.viagem.Viagem;
 
@@ -40,8 +41,12 @@ public class ClienteTestes {
     public void EqualsTestes(){
         Cliente a = this.cliente.clone();
         Cliente b = new Cliente("mail2", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
+
+        jRAPLWorker.start("Cliente,EqualsTestes");
         assertEquals(this.cliente.equals(a), true);
         assertEquals(this.cliente.equals(b), false);
+        jRAPLWorker.end();
+
     }
 
     @Test
@@ -50,9 +55,12 @@ public class ClienteTestes {
         Cliente b = new Cliente("mail", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
         Cliente c = new Cliente("mail11", "Goncalves", "qwerty", "Portugal", "20-09-1995", viagens, 11);
         Cliente d = this.cliente.clone();
+
+        jRAPLWorker.start("Cliente,compareToTest");
         assertEquals(this.cliente.compareTo(d), 0);
         assertEquals(this.cliente.compareTo(b), 1);
         assertEquals(this.cliente.compareTo(c), -1);
+        jRAPLWorker.end();
 
     }
     @AfterClass

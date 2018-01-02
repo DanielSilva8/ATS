@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import models.utilizadores.Cliente;
 import models.utilizadores.Motorista;
 import models.utilizadores.Utilizadores;
+import rapl.jRAPLWorker;
 import utils.Coordenada;
 import models.veiculos.Carro;
 import models.veiculos.Veiculo;
@@ -53,7 +54,9 @@ public class UtilizadorTestes {
     @Test
     public void top10ClientesGastadoresTestes() {
 
+        jRAPLWorker.start("Utilizador,top10ClientesGastadoresTestes");
         List<Cliente> clientes = a.top10ClientesGastadores();
+        jRAPLWorker.end();
         List<Cliente> expected = new ArrayList<>();
         expected.add(this.cliente);
 
@@ -63,7 +66,9 @@ public class UtilizadorTestes {
     @Test
     public void top5MotoristasTestes() {
 
+        jRAPLWorker.start("Utilizador,top5MotoristasTestes");
         List<Motorista> motoristas = a.top5MotoristasComMaiorDesvio();
+        jRAPLWorker.end();
         List<Motorista> expected = new ArrayList<>();
         expected.add(this.motorista);
 
@@ -76,9 +81,11 @@ public class UtilizadorTestes {
         Utilizadores utilizador = new Utilizadores();
         Utilizadores b = a.clone();
 
+        jRAPLWorker.start("Utilizador,EqualsTeste");
         assertTrue(this.a.equals(b));
         assertFalse(this.a.equals(null));
         assertFalse(this.a.equals(utilizador));
+        jRAPLWorker.end();
     }
 
     @Test
@@ -97,9 +104,11 @@ public class UtilizadorTestes {
             e.getStackTrace();
         }
 
+        jRAPLWorker.start("Utilizador,CompareToTeste");
         assertEquals(this.a.compareTo(utilizador1),0);
         assertEquals(this.a.compareTo(utilizador2),-1);
         assertEquals(this.a.compareTo(utilizador3),1);
+        jRAPLWorker.end();
     }
 
     @AfterClass
