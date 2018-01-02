@@ -54,38 +54,75 @@
 </head>
 
 <body>
+
+<!--header-->
 <nav class="navbar navbar-header" style="background-color: #ff6633; color: black">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"> <font color="black">jRAPL</font> </a>
+            <a class="navbar-brand" href="#" onclick="stats();"> <font color="black">jRAPL</font> </a>
         </div>
     </div>
 </nav>
 
+<main>
 <div class="row">
 
     <div class="col-md-2" style="border-right: 6px solid #ff6633; word-wrap: break-word">
-        <h3 class="side-title" style="text-align: center">All Tests</h3>
+        <a href="#" onclick="stats();"><h3 class="side-title" style="text-align: center"><font color="black">All Tests</font></h3> </a>
 
         @INSERTDATA
 
     </div>
-    <div class="col-md-10" style="border-left: 2px solid black ">
-        <div style="padding-top: 2em"></div>
 
-        <div id="chartContainer" style="height: 500px; width: 75%; padding-left: 13%" align="center"></div>
+    <div class="col-md-10" style="border-left: 2px solid black">
+        <div style="padding-top: 3em"></div>
+
+        <div  class="row" id="statsContainer" style="display: contents; padding-left: 1em">
+
+            <div class="" style="padding-top: 3em">
+                <div class="text-center">
+                    <h1>Tests</h1>
+                    @INSERTNUMBEROFTESTS
+                </div>
+            </div>
+            <div class="" style="padding-top: 3em; ">
+                <div class="text-center">
+                    <h1>Warnings</h1>
+                    @INSERTNUMBEROFWARNINGS
+                </div>
+            </div>
+            <div class="" style="padding-top: 3em">
+                <div class="text-center">
+                    <h1>Deprecated</h1>
+                    @INSERTNUMBEROFDEPRECATED
+                </div>
+            </div>
+        </div>
+
+        <div id="chartContainer" style="height: 500px; width: 75%; padding-left: 13%; display: none" align="center"></div>
     </div>
 </div>
+</main>
 
-<div class="container-fluid" align="right" style="background-color: #ff6633">
-    <h8 style=" color: black; text-align: right">ATS - Daniel Silva & Leonel Gonçalves </h8>
+<!--footer-->
+<div class="row">
+    <div class="container-fluid" align="right" style="background-color: #ff6633">
+        <h8 style=" color: black; text-align: right">ATS - Daniel Silva & Leonel Gonçalves </h8>
+    </div>
 </div>
 </body>
 
 <script>
 
+    function stats() {
+        document.getElementById("chartContainer").style.display = 'none';
+        document.getElementById("statsContainer").style.display = 'contents';
+    }
+
     function chart(name, old_time, old_dram, old_cpu, old_package, actual_time, actual_dram, actual_cpu, actual_package) {
 
+        document.getElementById("statsContainer").style.display = 'none';
+        document.getElementById("chartContainer").style.display = 'block';
         var chart = new CanvasJS.Chart("chartContainer", {
             exportEnabled: false,
             animationEnabled: true,
@@ -100,10 +137,10 @@
                     text: "Time elapsed:"
                 },
                 {
-                    text: "old: " + old_time + "ms"
+                    text: "old: " + (old_time == null ? "" : old_time + "ms")
                 },
                 {
-                    text: "actual: " + actual_time + "ms"
+                    text: "actual: " + (actual_time == null ? "" : actual_time + "ms")
                 },
                 {
                     text: '--'
