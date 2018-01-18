@@ -22,12 +22,12 @@ public class jRAPLWorker {
     private static int nrdeprecated = 0;
 
     static {
-//        try {
-//            File file = new File(reportPath + "jrapl.csv");
-//            file.delete();
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
+        try {
+            File file = new File(reportPath + "jrapl.csv");
+            file.delete();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void start(String _name){
@@ -38,8 +38,8 @@ public class jRAPLWorker {
     } 
 
     public static void end(){
+        end_stats = EnergyCheckUtils.getEnergyStats();
     	end = System.currentTimeMillis();
-    	end_stats = EnergyCheckUtils.getEnergyStats();
     	report();
     	EnergyCheckUtils.ProfileDealloc();
     }

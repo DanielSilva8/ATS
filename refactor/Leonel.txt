@@ -1,5 +1,0 @@
-Classe Ator - mudança no GetHistorico;
-Classe Viagem - mudança nos if/elses do CompareTo;
-Classe Ator - ComparacaoEntreDatas - inicio.compareTo(fim) > 0 - em vez de "==1"
-Classe Motorista - atualizadados- mudar nome da variavel dif para grau
-Eliminar comentarios

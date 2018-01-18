@@ -99,15 +99,17 @@ public class FuncionalidadesTestes {
 
     @Test
     public void closerMotoristaTest() {
-        jRAPLWorker.start("Funcionalidades,closerMotoristaTest");
-       assertEquals(new ViagemController().closerMotorista(new Coordenada(2,2),2), "email1" );
-        jRAPLWorker.end();
+
+        assertEquals(new ViagemController().closerMotorista(new Coordenada(2,2),2), "email1" );
+
         try {
             ((Motorista) DB.getUtilizadores().getAtor("email1")).setDisponibilidade(false);
         } catch (EmailDoesNotExistException e1) {
             e1.printStackTrace();
         }
-       assertEquals(new ViagemController().closerMotorista(new Coordenada(2,2),2), "email3" );
+        jRAPLWorker.start("Funcionalidades,closerMotoristaTest");
+         assertEquals(new ViagemController().closerMotorista(new Coordenada(2,2),2), "email3" );
+        jRAPLWorker.end();
     }
 
     @Test
