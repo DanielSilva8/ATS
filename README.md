@@ -39,8 +39,3 @@ Ir -> ATS/
        
       sudo mvn test
       
-Grupo
---------------------------------------------------------------
-
-- Fernando Silva    {pg32994}
-- Leonel Gonçalves  {pg33003}
